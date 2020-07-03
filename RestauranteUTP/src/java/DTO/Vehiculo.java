@@ -10,17 +10,29 @@ package DTO;
  * @author Gianpiero
  */
 public class Vehiculo {
-    private int id;
+    private int id_vehiculo;
     private String placa;
     private String tipo;
-    private boolean soat;
+    private String soat;
 
-    public int getId() {
-        return id;
+    public Vehiculo() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Vehiculo(int id_vehiculo, String placa, String tipo, String soat) {
+        this.id_vehiculo = id_vehiculo;
+        this.placa = placa;
+        this.tipo = tipo;
+        this.soat = soat;
+    }
+    
+    
+
+    public int getId_vehiculo() {
+        return id_vehiculo;
+    }
+
+    public void setId_vehiculo(int id_vehiculo) {
+        this.id_vehiculo = id_vehiculo;
     }
 
     public String getPlaca() {
@@ -39,12 +51,14 @@ public class Vehiculo {
         this.tipo = tipo;
     }
 
-    public boolean isSoat() {
+    public String getSoat() {
         return soat;
     }
 
-    public void setSoat(boolean soat) {
+    public void setSoat(String soat) {
         this.soat = soat;
     }
+    
+    
     
 }

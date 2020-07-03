@@ -5,7 +5,7 @@
 --%>
 <%@page import="DAO.PlatoDAO"%>
 <%@page import="DTO.Plato"%>
-<%@page import="DAO.ClienteDAO"%>
+
 <%@page import="java.util.Iterator"%>
 
 <%@page import="java.util.List"%>
@@ -27,7 +27,7 @@
                 
                     
                     <div class="container">
-                        <h1>Tus Clientes</h1>
+                        <h1>Tus Platos</h1>
                         <a class="btn btn-success btn-sm" href="Controlador?accion=addclientes">Agregar Nuevo</a>
                         <table class="table table-bordered">
                             <tr>

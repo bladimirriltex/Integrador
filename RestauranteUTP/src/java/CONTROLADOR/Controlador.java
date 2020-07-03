@@ -25,6 +25,7 @@ public class Controlador extends HttpServlet {
     String addclientes="adminCliente/addClientes.jsp";
     String editclientes="adminCliente/editClientes.jsp";
     String listarplatos="adminPlatos/verPlatos.jsp";
+    String listarvehiculos="adminVehiculos/verVehiculos.jsp";
     Cliente c=new Cliente();
     ClienteDAO cdao=new ClienteDAO();
 
@@ -144,6 +145,8 @@ public class Controlador extends HttpServlet {
             
         }else if(action.equalsIgnoreCase("listarplatos")){
             acceso=listarplatos;
+        }else if(action.equalsIgnoreCase("listarvehiculos")){
+            acceso=listarvehiculos;
         }
         
         
