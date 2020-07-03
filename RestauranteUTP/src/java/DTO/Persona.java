@@ -13,29 +13,28 @@ public class Persona {
     protected int id;
     protected String nombres;
     protected String apellidos;
-    protected int dni;
-    protected int celular;
-    protected String distrito;
+    protected String dni;
+    protected String celular;
+    
     protected String direccion;
     protected String correo;
     protected String password;
     
-    protected boolean valid;
+    protected int id_distrito;
 
-    public boolean isValid() {
-        return valid;
+    public Persona() {
     }
 
-    public void setValid(boolean valid) {
-        this.valid = valid;
-    }
-
-    public String getDistrito() {
-        return distrito;
-    }
-
-    public void setDistrito(String distrito) {
-        this.distrito = distrito;
+    public Persona(int id, String nombres, String apellidos, String dni, String celular, String direccion, String correo, String password, int id_distrito) {
+        this.id = id;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.dni = dni;
+        this.celular = celular;
+        this.direccion = direccion;
+        this.correo = correo;
+        this.password = password;
+        this.id_distrito = id_distrito;
     }
     
 
@@ -63,19 +62,19 @@ public class Persona {
         this.apellidos = apellidos;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
@@ -102,12 +101,14 @@ public class Persona {
     public void setPassword(String password) {
         this.password = password;
     }
-    
- public String toString() {
-  return "Cliente [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", dni=" + dni + ", celular="
-    + celular + ", distrito=" + distrito +", direccion=" + direccion + ", correo=" + correo + ", password=" + password + "]";
- }
 
+    public int getId_distrito() {
+        return id_distrito;
+    }
+
+    public void setId_distrito(int id_distrito) {
+        this.id_distrito = id_distrito;
+    }
     
     
 }

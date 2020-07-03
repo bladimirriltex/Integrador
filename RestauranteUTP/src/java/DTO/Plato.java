@@ -10,42 +10,49 @@ package DTO;
  * @author Gianpiero
  */
 public class Plato {
-    private int id;
-    private String tipo;
-    private String nombre;
-    private int precio;
+    private int id_plato;
+    
+    private String nombre_plato;
+    private float precio_plato;
     private String imagen;
+    private int stock;
+    private int id_tipo;
 
-    public String getTipo() {
-        return tipo;
+    public Plato() {
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public Plato(int id_plato, String nombre_plato, float precio_plato, String imagen, int stock, int id_tipo) {
+        this.id_plato = id_plato;
+        this.nombre_plato = nombre_plato;
+        this.precio_plato = precio_plato;
+        this.imagen = imagen;
+        this.stock = stock;
+        this.id_tipo = id_tipo;
+    }
+    
+
+    public int getId_plato() {
+        return id_plato;
     }
 
-    public int getId() {
-        return id;
+    public void setId_plato(int id_plato) {
+        this.id_plato = id_plato;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getNombre_plato() {
+        return nombre_plato;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setNombre_plato(String nombre_plato) {
+        this.nombre_plato = nombre_plato;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public float getPrecio_plato() {
+        return precio_plato;
     }
 
-    public int getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(int precio) {
-        this.precio = precio;
+    public void setPrecio_plato(float precio_plato) {
+        this.precio_plato = precio_plato;
     }
 
     public String getImagen() {
@@ -55,5 +62,23 @@ public class Plato {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public int getId_tipo() {
+        return id_tipo;
+    }
+
+    public void setId_tipo(int id_tipo) {
+        this.id_tipo = id_tipo;
+    }
     
+    
+
 }

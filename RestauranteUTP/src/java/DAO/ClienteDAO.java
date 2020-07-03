@@ -5,140 +5,114 @@
  */
 package DAO;
 
-import CONEXION.ConnectionManager;
+import CONEXION.Conexion;
+
 import DTO.Cliente;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import INTERFACES.CRUDcliente;
+import java.sql.*;
+import java.util.*;
+
 
 /**
  *
  * @author Gianpiero
  */
-public class ClienteDAO {
-    private static Connection con = null;
-    public static int save(Cliente c) {
-        int status=0;
-        try{
-            con = ConnectionManager.getConnection();
-            
-            PreparedStatement ps = con.prepareStatement("insert into Cliente(nombres,apellidos,dni,celular,distrito,direccion,correo,password) values (?,?,?,?)");
-            ps.setString(1, c.getNombres());
-            ps.setString(2, c.getApellidos());
-            ps.setInt(3, c.getDni());
-            ps.setInt(4, c.getCelular());
-            ps.setString(5, c.getDistrito());
-            ps.setString(6, c.getDireccion());
-            ps.setString(7, c.getCorreo());
-            ps.setString(8, c.getPassword());
-            
-            status = ps.executeUpdate();
-            
-            con.close();
-            
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
-        return status;
-    }
+public class ClienteDAO implements CRUDcliente{
     
-    public static int update(Cliente c){
-        int status=0;
-        try{
-            con = ConnectionManager.getConnection();
-            
-            PreparedStatement ps = con.prepareStatement("update Cliente nombres=?,apellidos=?,dni=?,celular=?,distrito=?,direccion=?,correo=?,password=? where id=?");
-            ps.setString(2, c.getNombres());
-            ps.setString(3, c.getApellidos());
-            ps.setInt(4, c.getDni());
-            ps.setInt(5, c.getCelular());
-            ps.setString(6, c.getDistrito());
-            ps.setString(7, c.getDireccion());
-            ps.setString(8, c.getCorreo());
-            ps.setString(9, c.getPassword());
-            
-            status = ps.executeUpdate();
-            
-            con.close();
-            
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
-        return status;
-        
-    }
-    public static int delete(int id){
-        int status = 0;
-        try{
-            con = ConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement("delete from Clientes where id=?");
-            ps.setInt(1, id);
-            status = ps.executeUpdate();
-            
-            con.close();
-            
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
-        return status;
-    }
+    Conexion cn=new Conexion();
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    Cliente c = new Cliente();
     
-    public static Cliente getClienteById(int id){
-        Cliente c = new Cliente();
+
+    @Override
+    public List listar() {
+        ArrayList<Cliente> list = new ArrayList<>();
+        String sql="select * from cliente";
         try{
-            con = ConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement("select * from Clientes where id=?");
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                c.setId(rs.getInt(1));
-                c.setNombres(rs.getString(2));
-                c.setApellidos(rs.getString(3));
-                c.setDni(rs.getInt(4));
-                c.setCelular(rs.getInt(5));
-                c.setDistrito(rs.getString(6));
-                c.setDireccion(rs.getString(7));
-                c.setCorreo(rs.getString(8));
-                c.setPassword(rs.getString(9));
-                
-            }
-            con.close();
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
-        return c;
-    }
-    
-    public static List<Cliente> getAllClientes() {
-        List<Cliente> list = new ArrayList<Cliente>();
-        
-        try{
-            con = ConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement("select * from clientes");
-            ResultSet rs = ps.executeQuery();
+            con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
             while(rs.next()){
                 Cliente c = new Cliente();
-                c.setId(rs.getInt(1));
-                c.setNombres(rs.getString(2));
-                c.setApellidos(rs.getString(3));
-                c.setDni(rs.getInt(4));
-                c.setCelular(rs.getInt(5));
-                c.setDistrito(rs.getString(6));
-                c.setDireccion(rs.getString(7));
-                c.setCorreo(rs.getString(8));
-                c.setPassword(rs.getString(9));
+                c.setId(rs.getInt("id_cliente"));
+                c.setNombres(rs.getString("nombre_cliente"));
+                c.setApellidos(rs.getString("apellidos_cliente"));
+                c.setDni(rs.getString("dni_cliente"));
+                c.setCelular(rs.getString("celular_cliente"));
+                c.setId_distrito(rs.getInt("id_distrito"));
+                c.setDireccion(rs.getString("direccion_cliente"));
+                c.setCorreo(rs.getString("correo_cliente"));
+                c.setPassword(rs.getString("password_cliente"));
                 list.add(c);
             }
+        }catch (Exception e){
             
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
-        return list;
+        }return list;
     }
     
-    public static void main (String[] args){
-        System.out.println(ClienteDAO.getAllClientes());
+
+    @Override
+    public Cliente list(int id) {
+        String sql="select * from cliente where id_cliente="+id;
+        try{
+            con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                
+                c.setId(rs.getInt("id_cliente"));
+                c.setNombres(rs.getString("nombre_cliente"));
+                c.setApellidos(rs.getString("apellidos_cliente"));
+                c.setDni(rs.getString("dni_cliente"));
+                c.setCelular(rs.getString("celular_cliente"));
+                c.setId_distrito(rs.getInt("id_distrito"));
+                c.setDireccion(rs.getString("direccion_cliente"));
+                c.setCorreo(rs.getString("correo_cliente"));
+                c.setPassword(rs.getString("password_cliente"));
+                
+            }
+        }catch (Exception e){
+            
+        }return c;
     }
+
+    @Override
+    public boolean add(Cliente c) {
+        String sql="insert into cliente (nombre_cliente, apellidos_cliente, dni_cliente, celular_cliente, direccion_cliente, correo_cliente, password_cliente, id_distrito) values('"+c.getNombres()+"', '"+c.getApellidos()+"', '"+c.getDni()+"', '"+c.getCelular()+"', '"+c.getDireccion()+"', '"+c.getCorreo()+"', '"+c.getPassword()+"', '"+c.getId_distrito()+"')";
+        try{
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){
+            
+        }
+        return false;
+    }
+
+    @Override
+    public boolean edit(Cliente c) {
+            String sql="UPDATE cliente SET nombre_cliente = '"+c.getNombres()+"', apellidos_cliente= '"+c.getApellidos()+"', dni_cliente= '"+c.getDni()+"', celular_cliente= '"+c.getCelular()+"', direccion_cliente= '"+c.getDireccion()+"', correo_cliente= '"+c.getCorreo()+"', password_cliente= '"+c.getPassword()+"', id_distrito= '"+c.getId_distrito()+"' where id_cliente= "+c.getId();
+        try{
+            con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){
+            
+        }return false;
+    }
+
+    @Override
+    public boolean eliminar(int id) {
+        String sql="delete from cliente where id_cliente= "+id;
+        try{
+            con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){
+            
+        }return false;
+    }
+    
 }
