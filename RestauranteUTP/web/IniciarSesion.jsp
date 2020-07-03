@@ -11,29 +11,14 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <%@include file="header.jsp" %>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <title>Iniciar Sesion</title>
   </head>
   <body >
-    <nav class="navbar navbar-expand-sm navbar-light bg-light px-5 pb-5">
-      <a class="navbar-brand" href="#">RestauranteUtp</a>
-      <a class="navbar-brand" href="#">ICON</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav  ml-auto text-dark ">
-          <a class="nav-item nav-link" href="#">Inicio</a>
-          <a class="nav-item nav-link" href="#">Menu del dia</a>
-          <a class="nav-item nav-link" href="#">Nosotros</a>
-          <a class="  btn btn-outline-secondary px-2" href="#" >Iniciar Sesión</a>
-          <a class="  btn btn-outline-secondary" href="#" >Registrarse</a>
-        </div>
-      </div>
-    </nav>
+    
     <!-- Inicio sesion -->
     <center><div class="container mt-5">
       <div class="card" style="max-width: 40rem;">
@@ -41,7 +26,7 @@
           Iniciar Sesión
         </div>
         <div class="card-body">
-          <div class="container  " style="max-width: 30rem; border: solid 1px #000;" >
+          <div class="container" style="max-width: 30rem;" >
             <form >
               <div class="form-row" >
 

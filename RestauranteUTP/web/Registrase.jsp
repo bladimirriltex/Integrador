@@ -11,29 +11,14 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <%@include file="header.jsp" %>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <title>Hello, world!</title>
   </head>
   <body >
-    <nav class="navbar navbar-expand-sm navbar-light bg-light px-5 pb-5">
-      <a class="navbar-brand" href="#">RestauranteUtp</a>
-      <a class="navbar-brand" href="#">ICON</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav  ml-auto text-dark ">
-          <a class="nav-item nav-link" href="#">Inicio</a>
-          <a class="nav-item nav-link" href="#">Menu del dia</a>
-          <a class="nav-item nav-link" href="#">Nosotros</a>
-          <a class="  btn btn-outline-secondary px-2" href="#" >Iniciar Sesión</a>
-          <a class="  btn btn-outline-secondary" href="#" >Registrarse</a>
-        </div>
-      </div>
-    </nav>
+    
     <!-- Registrase -->
 
     <div class="container bg-light mt-5 mb-5" style="width: 60%;">
@@ -59,56 +44,44 @@
             <div class="form-row">
               <div class="col-md-6 mb-3">
                 <label for="password">Contraseña</label>
-                <input type="password" class="form-control is-valid" id="password"  required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
+                <input type="password" class="form-control " id="password"  required>
+                
               </div>
               <div class="col-md-6 mb-3">
                 <label for="password">Repita la contraseña</label>
-                <input type="password" class="form-control is-valid" id="password" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
+                <input type="password" class="form-control " id="password" required>
+                
               </div>
             </div>
 
             <div class="form-row">
               <div class="col-md-6 mb-3">
                 <label for="nombre">Nombres</label>
-                <input type="text" class="form-control is-valid" id="nombre"  required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
+                <input type="text" class="form-control " id="nombre"  required>
+                
               </div>
               <div class="col-md-6 mb-3">
                 <label for="apellidos">Apellidos</label>
-                <input type="text" class="form-control is-valid" id="apellidos" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
+                <input type="text" class="form-control " id="apellidos" required>
+                
               </div>
             </div>
 
             <div class="form-row">
               <div class="col-md-6 mb-3">
                 <label for="direccion">Direccion</label>
-                <input type="text" class="form-control is-valid" id="direccion"  required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
+                <input type="text" class="form-control " id="direccion"  required>
+                
               </div>
               <div class="col-md-6 mb-3">
                 <label for="distrito">Distrito</label>
                 <select class="custom-select">
-                  <option selected>Open this select menu</option>
+                  <option selected>Seleccione su distrito</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
                 </select>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
+                
               </div>
             </div>
 
@@ -118,20 +91,16 @@
                 <label for="distrito">Tipo de Documento</label>
                 <select class="custom-select">
                   <option selected>Selecciona</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="1">DNI</option>
+                  <option value="2">Carnet de Extranjeria</option>
+                  <option value="3">Pasaporte</option>
                 </select>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
+                
               </div>
               <div class="col-md-6 mb-3">
                 <label for="direccion">Nro. de Identificacion</label>
-                <input type="text" class="form-control is-valid" id="direccion"  required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
+                <input type="text" class="form-control" id="direccion"  required>
+                
               </div>
             </div>
 
@@ -141,9 +110,7 @@
               <div class="col-md-6 mb-3">
                 <label for="celular">Celular</label>
                 <input type="num" class="form-control is-valid" id="celular"  required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
+                
               </div>
             </div>
 
