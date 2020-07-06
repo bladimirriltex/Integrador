@@ -18,8 +18,9 @@
         <div class="container text-center" >
             <h2>¿Que deseas hacer?</h2>
         <a class="btn btn-success btn-lg" href="Controlador?accion=listarclientes">Listar Clientes</a>
-        <a class="btn btn-success btn-lg" href="Controlador?accion=listarplatos">Listar Platos</a>
-        <a class="btn btn-success btn-lg" href="Controlador?accion=listarvehiculos">Listar Vehiculos</a>
+        <a class="btn btn-success btn-lg" href="ControladorPlato?accion=listarplatos">Listar Platos</a>
+        <a class="btn btn-success btn-lg" href="ControladorVehiculo?accion=listarvehiculos">Listar Vehiculos</a>
+        <a class="btn btn-success btn-lg" href="ControladorVehiculo?accion=listarvehiculos">Listar Vehiculos</a>
     </div>
     </body>
 </html>

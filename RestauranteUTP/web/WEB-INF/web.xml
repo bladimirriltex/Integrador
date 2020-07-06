@@ -4,9 +4,33 @@
         <servlet-name>Controlador</servlet-name>
         <servlet-class>CONTROLADOR.Controlador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorPlato</servlet-name>
+        <servlet-class>CONTROLADOR.ControladorPlato</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorVehiculo</servlet-name>
+        <servlet-class>CONTROLADOR.ControladorVehiculo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorEmpleado</servlet-name>
+        <servlet-class>CONTROLADOR.ControladorEmpleado</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorPlato</servlet-name>
+        <url-pattern>/ControladorPlato</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorVehiculo</servlet-name>
+        <url-pattern>/ControladorVehiculo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorEmpleado</servlet-name>
+        <url-pattern>/ControladorEmpleado</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

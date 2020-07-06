@@ -4,49 +4,46 @@
     Author     : Gianpiero
 --%>
 
-<%@page import="DTO.Cliente"%>
-<%@page import="DAO.ClienteDAO"%>
+
+
+<%@page import="DTO.Plato"%>
+<%@page import="DAO.PlatoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <title>Editar Datos del cliente</title>
+        <title>Editar Datos del Plato</title>
     </head>
     <body>
        <div>
            <div class="col-lg-8">
            <%
-               ClienteDAO cdao=new ClienteDAO();
-               int id=Integer.parseInt((String)request.getAttribute("idcliente"));
-               Cliente c = (Cliente)cdao.list(id);
+               PlatoDAO pldao=new PlatoDAO();
+               int id_plato=Integer.parseInt((String)request.getAttribute("id_plato"));
+               Plato pl = (Plato)pldao.list(id_plato);
            %>
            
-            <h1>Modificar Cliente</h1>
+            <h1>Modificar Plato</h1>
             <form action="Controlador">
-                Nombres:<br>
-                <input class="form-control" type="text" value="<%= c.getNombres() %>" name="nombres"><br>
-                Apellidos:<br>
-                <input class="form-control" type="text" value="<%= c.getApellidos() %>" name="apellidos"><br>
-                DNI:<br>
-                <input class="form-control" type="text" value="<%= c.getDni()%>" name="dni"><br>
-                Celular:<br>
-                <input class="form-control" type="text" value="<%= c.getCelular() %>" name="celular"><br>
-                Distrito:<br>
-                <input class="form-control" type="text" value="<%= c.getId_distrito() %>" name="id_distrito"><br>
-                Direccion:<br>
-                <input class="form-control" type="text" value="<%= c.getDireccion() %>" name="direccion"><br>
-                Correo:<br>
-                <input class="form-control" type="text" value="<%= c.getCorreo() %>" name="correo"><br>
-                Password:<br>
-                <input class="form-control" type="text" value="<%= c.getPassword() %>" name="password"><br>
-                
-                <input type="hidden" value="<%= c.getId() %>" name="id"><br>
+                Nombre plato:<br>
+                <input class="form-control" type="text" value="<%= pl.getNombre_plato() %>" name="nombre_plato"><br>
+                Precio del plato:<br>
+                <input class="form-control" type="text" value="<%= pl.getPrecio_plato() %>" name="precio_plato"><br>
+                Imagen:<br>
+                <input class="form-control" type="text" value="<%= pl.getImagen() %>" name="imagen"><br>
+                Stock:<br>
+                <input class="form-control" type="text" value="<%= pl.getStock() %>" name="stock"><br>
+                Tipo de plato:<br>
+                <input class="form-control" type="text" value="<%= pl.getId_tipo() %>" name="id_tipo"><br>
                 
                 
-                <input class="btn btn-primary btn-sm" type="submit" name="accion" value="Actualizar Cliente"><br>
-                <a href="Controlador?accion=listarclientes">Regresar</a>
+                <input type="hidden" value="<%= pl.getId_plato() %>" name="id_plato"><br>
+                
+                
+                <input class="btn btn-primary btn-sm" type="submit" name="accion" value="Actualizar Plato"><br>
+                <a href="ControladorPlato?accion=listarplatos">Regresar</a>
             </form>
         </div>
        </div>

@@ -28,7 +28,7 @@
                     
                     <div class="container">
                         <h1>Los Vehiculos</h1>
-                        <a class="btn btn-success btn-sm" href="Controlador?accion=addclientes">Agregar Nuevo</a>
+                        <a class="btn btn-success btn-sm" href="ControladorVehiculo?accion=addvehiculos">Agregar Nuevo</a>
                         <table class="table table-bordered">
                             <tr>
                                 <th class="text-center">Id Vehiculo</th>
@@ -60,8 +60,8 @@
                                 
                                 
                                 <td>
-                                    <a class="btn btn-warning btn-sm" href="Controlador?accion=editarclientes&id=<%= v.getId_vehiculo() %>">Editar</a>
-                                    <a class="btn btn-danger btn-sm" href="Controlador?accion=eliminarclientes&id=<%= v.getId_vehiculo() %>">Eliminar</a>
+                                    <a class="btn btn-warning btn-sm" href="ControladorVehiculo?accion=editarvehiculos&id=<%= v.getId_vehiculo() %>">Editar</a>
+                                    <a class="btn btn-danger btn-sm" href="ControladorVehiculo?accion=eliminarvehiculos&id=<%= v.getId_vehiculo() %>">Eliminar</a>
                                 </td>
                                 </tr>
                                 <%

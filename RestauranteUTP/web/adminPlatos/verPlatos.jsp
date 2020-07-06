@@ -28,7 +28,7 @@
                     
                     <div class="container">
                         <h1>Tus Platos</h1>
-                        <a class="btn btn-success btn-sm" href="Controlador?accion=addclientes">Agregar Nuevo</a>
+                        <a class="btn btn-success btn-sm" href="ControladorPlato?accion=addplatos">Agregar Nuevo</a>
                         <table class="table table-bordered">
                             <tr>
                                 <th class="text-center">Id Plato</th>
@@ -62,8 +62,8 @@
                                 
                                 
                                 <td>
-                                    <a class="btn btn-warning btn-sm" href="Controlador?accion=editarclientes&id=<%= pl.getId_plato() %>">Editar</a>
-                                    <a class="btn btn-danger btn-sm" href="Controlador?accion=eliminarclientes&id=<%= pl.getId_plato() %>">Eliminar</a>
+                                    <a class="btn btn-warning btn-sm" href="ControladorPlato?accion=editarplatos&id=<%= pl.getId_plato() %>">Editar</a>
+                                    <a class="btn btn-danger btn-sm" href="ControladorPlato?accion=eliminarplatos&id=<%= pl.getId_plato() %>">Eliminar</a>
                                 </td>
                                 </tr>
                                 <%
