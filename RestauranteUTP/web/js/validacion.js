@@ -1,164 +1,88 @@
-window.onload=iniciar;
+// creamos la funcion
+function validarFormulario(){
+    // removemos el div con la clase alert
+    $('.alert').remove();
 
-function iniciar(){
-    document.getElementById('btnsend').addEventListener('click',validarIniciosesion,false);
-}
-function setErrorFor(input, message){
-    const formControl=input.parentElement;
-    const small= formControl.querySelector('small');
-    formControl.className='formcontrol error';
-    small.innerText=message;
-}
 
-function setSuccessFor(input){
-    const formControl=input.parentElement;
-    formControl.className='formcontrol success';
-    
-}
-
-function validarCorreovoid(){
-    var email=document.getElementById('email');
-    if(onlyvoid(email.value)){
-        setErrorFor(email,'El campo no puede estar vacio');
-        return false;
-    }else{
-        setSuccessFor(email);
-        return true;
-    }
-}
-
-function validarCorreocheck(){
-    var email=document.getElementById('email');
-    if(!checkEmail(email.value)){
-        setErrorFor(email,'El correo no es valido');
-        return false;
-    }else{
-        setSuccessFor(email);
-        return true;
-    }
-}
-function setErrorFor(input, message){
-    const formControl=input.parentElement;
-    const small= formControl.querySelector('small');
-    formControl.className='formcontrol error';
-    small.innerText=message;
-}
-
-function setSuccessFor(input){
-    const formControl=input.parentElement;
-    formControl.className='formcontrol success';
-    
-}
-
-function validarIniciosesion(e){
-    if(validarCorreo() && validarCorreocheck()){
+    // declarion de variables
+    var password=$('#password').val(),
+        correo=$('#correo').val();
         
-        return true;
+
+    // validamos el campo nombre
+    if(password=="" || password==null){
+
+        cambiarColor("password");
+        // mostramos le mensaje de alerta
+        mostraAlerta("Campo obligatorio");
+        return false;
     }else{
-        e.preventDefault();
-        
-        return false;
+        var expresion= /^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*$/;
+        if(!expresion.test(password)){
+            // mostrara el mesaje que debe ingresar un nombre válido
+            cambiarColor("nombre");
+            mostraAlerta("No se permiten carateres especiales o numeros");
+            return false;
+        }
     }
-}
-function validarCorreo(){}
-function validarContraseña(){}
 
-function checkEmail(valor) {
-    if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(valor)){
-        return true;
-    } else {
+    // validamos el correo
+    if(correo=="" || correo==null){
+
+        cambiarColor("correo");
+        // mostramos le mensaje de alerta
+        mostraAlerta("Campo obligatorio");
         return false;
+    }else{
+        var expresion= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+        if(!expresion.test(correo)){
+            // mostrara el mesaje que debe ingresar un nombre válido
+            cambiarColor("correo");
+            mostraAlerta("Por favor ingrese un correo válido");
+            return false;
+        }
     }
-}
 
+   
 
-function onlyText(para) {
-    var patron=/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/;
-    if(para.search(patron)){
-        return false;
-    }else {
-        return true;
-    }
-}
+     
 
-function onlyNun(para) {
+    $('form').submit();
+    return true;
     
-    if(!/^([0-9])*$/.test(para)){
-        return false;
-    }else {
-        return true;
-    }
+} 
+
+$('input').focus(function(){
+    $('.alert').remove();
+    colorDefault('nombre');
+    colorDefault('correo');
+    colorDefault('asunto');
+});
+
+
+
+// creamos un funcion de color por defecto a los bordes de los inputs
+function colorDefault(dato){
+    $('#' + dato).css({
+        border: "1px solid #999"
+    });
 }
 
-function onlyvoid(para) {
-    
-    if(para!==''){
-        return false;
-    }else {
-        return true;
-    }
-}
-function setErrorFor(input, message){
-    const formControl=input.parentElement;
-    const small= formControl.querySelector('small');
-    formControl.className='formcontrol error';
-    small.innerText=message;
+// creamos una funcio para cambiar de color a su bordes de los input
+function cambiarColor(dato){
+    $('#' + dato).css({
+        border: "1px solid #dd5144"
+    });
 }
 
-function setSuccessFor(input){
-    const formControl=input.parentElement;
-    formControl.className='formcontrol success';
-    
+// funcion para mostrar la alerta
+
+function mostraAlerta(texto){
+    $('#password').after('<div class="alert">Error: '+ texto +'</div>');
 }
+
+
 /*
-window.onload=iniciar;
-function  iniciar(){
-    document.getElementById("btnsend").addEventListener('click',e=>{
-    e.preventDefault();
-    const btnsend=document.getElementById('btnsend');
-    if (btnsend.value==='iniciar'){
-        iniciar_sesion();
-    }else if (btnsend.value==='registrar') {
-        registrar();
-    }
-    
-    
-},false);
-    
-}
-
-
-
-
-
-
-function iniciar_sesion(){
-    const email=document.getElementById('email');
-    const password=document.getElementById('password');     
-    
-    const emailvalue=email.value.trim(); 
-    const passwordvalue=password.value.trim(); 
-    
-    if (emailvalue==='') {
-        setErrorFor(email, 'No puede dejar el campo en blanco.');		
-    }else if(!validarEmail(emailvalue)){
-        setErrorFor(email, 'El E-mail no es valido.');
-    }else{
-        setSuccessFor(email);
-    }
-    
-    
-    
-    if (passwordvalue==='') {
-        setErrorFor(password, 'No puede dejar el campo en blanco.');
-    }else{
-        setSuccessFor(password);
-    }
-    
-    
-    
-}
-
 function registrar(){
     const email=document.getElementById('email');
     const password=document.getElementById('password');
