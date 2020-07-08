@@ -1,13 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package DAO;
 
 import CONEXION.Conexion;
 
 import DTO.Cliente;
+import DTO.Persona;
 import INTERFACES.CRUDcliente;
 import java.sql.*;
 import java.util.*;
@@ -16,23 +17,23 @@ import java.util.*;
 /**
  *
  * @author Gianpiero
- */
+*/
 public class ClienteDAO implements CRUDcliente{
     
     Conexion cn=new Conexion();
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
-    Cliente c = new Cliente();
+    Cliente c =null;
     
-
+    
     @Override
     public List listar() {
         ArrayList<Cliente> list = new ArrayList<>();
         String sql="select * from cliente";
         try{
             con=cn.getConnection();
-            ps=con.prepareStatement(sql);
+            ps=con.prepareStatement(sql);          
             rs=ps.executeQuery();
             while(rs.next()){
                 Cliente c = new Cliente();
@@ -52,9 +53,10 @@ public class ClienteDAO implements CRUDcliente{
         }return list;
     }
     
-
+    
     @Override
     public Cliente list(int id) {
+       
         String sql="select * from cliente where id_cliente="+id;
         try{
             con=cn.getConnection();
@@ -77,7 +79,7 @@ public class ClienteDAO implements CRUDcliente{
             
         }return c;
     }
-
+    
     @Override
     public boolean add(Cliente c) {
         String sql="insert into cliente (nombre_cliente, apellidos_cliente, dni_cliente, celular_cliente, direccion_cliente, correo_cliente, password_cliente, id_distrito) values('"+c.getNombres()+"', '"+c.getApellidos()+"', '"+c.getDni()+"', '"+c.getCelular()+"', '"+c.getDireccion()+"', '"+c.getCorreo()+"', '"+c.getPassword()+"', '"+c.getId_distrito()+"')";
@@ -90,10 +92,10 @@ public class ClienteDAO implements CRUDcliente{
         }
         return false;
     }
-
+    
     @Override
     public boolean edit(Cliente c) {
-            String sql="UPDATE cliente SET nombre_cliente = '"+c.getNombres()+"', apellidos_cliente= '"+c.getApellidos()+"', dni_cliente= '"+c.getDni()+"', celular_cliente= '"+c.getCelular()+"', direccion_cliente= '"+c.getDireccion()+"', correo_cliente= '"+c.getCorreo()+"', password_cliente= '"+c.getPassword()+"', id_distrito= '"+c.getId_distrito()+"' where id_cliente= "+c.getId();
+        String sql="UPDATE cliente SET nombre_cliente = '"+c.getNombres()+"', apellidos_cliente= '"+c.getApellidos()+"', dni_cliente= '"+c.getDni()+"', celular_cliente= '"+c.getCelular()+"', direccion_cliente= '"+c.getDireccion()+"', correo_cliente= '"+c.getCorreo()+"', password_cliente= '"+c.getPassword()+"', id_distrito= '"+c.getId_distrito()+"' where id_cliente= "+c.getId();
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -102,7 +104,7 @@ public class ClienteDAO implements CRUDcliente{
             
         }return false;
     }
-
+    
     @Override
     public boolean eliminar(int id) {
         String sql="delete from cliente where id_cliente= "+id;
@@ -113,6 +115,46 @@ public class ClienteDAO implements CRUDcliente{
         }catch(Exception e){
             
         }return false;
+    }
+    
+    @Override
+    public Cliente IniciarSesion(Persona user) {
+        String sql="select * from cliente where correo_cliente=? and password_cliente=?";
+        try {
+            con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            ps.setString(1, user.getCorreo());
+            ps.setString(2, user.getPassword());
+            rs=ps.executeQuery();
+            if(rs.next()){
+                c = new Cliente();
+                c.setId(rs.getInt(1));
+                c.setNombres(rs.getString(2));
+                c.setApellidos(rs.getString(3));
+                c.setDni(rs.getString(4));
+                c.setCelular(rs.getString(5));
+                c.setDireccion(rs.getString(6));
+                c.setCorreo(rs.getString(7));
+                c.setPassword(rs.getString(8));
+                c.setId_distrito(Integer.parseInt(rs.getString(9)));
+                
+                System.out.println(c.getCorreo());
+                System.out.println(c.getPassword());
+            }
+        } catch (NumberFormatException | SQLException e) {
+            System.out.println("error cliebtaDAO"+e);
+        }finally{
+            try {
+                if(rs!=null)rs.close();
+                if(ps!=null)ps.close();
+                
+            } catch (SQLException e) {
+                System.out.println("error clienteDAO"+e);
+            }
+        }
+        
+        return c;
+        
     }
     
 }

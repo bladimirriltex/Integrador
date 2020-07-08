@@ -1,4 +1,4 @@
-// creamos la funcion
+/*// creamos la funcion
 function validarFormulario(){
     // removemos el div con la clase alert
     $('.alert').remove();
@@ -80,9 +80,38 @@ function cambiarColor(dato){
 function mostraAlerta(texto){
     $('#password').after('<div class="alert">Error: '+ texto +'</div>');
 }
+ */
+
+function validarSesion(){
+    var email=document.getElementById('email'), password=document.getElementById('password');
+    var emailval=email.value, passwordval=password.value;
+    var expresion= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+    if(emailval=='' || emailval==null){
+        setErrorFor(email,'El campo no puede quedar vacio');
+        return false;
+    }else{
+        setSuccessFor(email);
+    }
+    
+    /*else if(!expresion.test(emailval)){
+        setErrorFor(email,'El e-mail no es valido');
+        return false;
+    }*/
+    
+    if(passwordval=='' || password==null)
+    {
+        setErrorFor(password,'El campo no puede quedar vacio');
+        return false;
+    }else{
+        setSuccessFor(password);
+    }
+    
+    $('form').submit();
+    return true;
+}
 
 
-/*
+
 function registrar(){
     const email=document.getElementById('email');
     const password=document.getElementById('password');
@@ -243,4 +272,3 @@ function onlyvoid(para) {
         return true;
     }
 }
-*/
