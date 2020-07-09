@@ -56,7 +56,8 @@
                                 <td class="text-center"><%= pl.getId_plato() %></td>
                                 <td class="text-center"><%= pl.getNombre_plato() %></td>
                                 <td class="text-center"><%= pl.getPrecio_plato() %></td>
-                                <td class="text-center"><%= pl.getImagen() %></td>
+                                
+                                <td class="text-center"><img src="<%= pl.getImagen() %>" width="100" height="100" ></td>
                                 <td class="text-center"><%= pl.getStock() %></td>
                                 <td class="text-center"><%= pl.getId_tipo() %></td>
                                 

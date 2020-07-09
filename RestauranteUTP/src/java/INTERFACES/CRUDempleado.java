@@ -5,19 +5,20 @@
  */
 package INTERFACES;
 
-import DTO.Plato;
+
+import DTO.Empleado;
 import java.util.List;
 
 /**
  *
  * @author Gianpiero
  */
-public interface CRUDplato {
+public interface CRUDempleado {
     public List listar();
-    public Plato list(int id_plato);
-    public boolean add(Plato pl);
-    public boolean edit(Plato pl);
-    public boolean eliminar(int id_plato);
+    public Empleado list(int id_empleado);
+    public boolean add(Empleado em);
+    public boolean edit(Empleado em);
+    public boolean eliminar(int id_empleado);
     
     
 }

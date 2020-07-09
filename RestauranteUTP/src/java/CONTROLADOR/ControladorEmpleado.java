@@ -5,8 +5,11 @@
  */
 package CONTROLADOR;
 
+import DAO.EmpleadoDAO;
+import DTO.Empleado;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +20,11 @@ import javax.servlet.http.HttpServletResponse;
  * @author Gianpiero
  */
 public class ControladorEmpleado extends HttpServlet {
+    String listarempleados="adminEmpleados/verEmpleados.jsp";
+    String addempleados="adminEmpleados/addEmpleados.jsp";
+    String editempleados="adminEmpleados/editEmpleados.jsp";
+    Empleado em=new Empleado();
+    EmpleadoDAO emdao=new EmpleadoDAO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -56,7 +64,102 @@ public class ControladorEmpleado extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String acceso="";
+        String action=request.getParameter("accion");
+        
+        if(action.equalsIgnoreCase("listarempleados")){
+            acceso=listarempleados;
+        }else if(action.equalsIgnoreCase("addempleados")){
+            acceso = addempleados;
+        }else if(action.equalsIgnoreCase("Agregar Empleado")){
+            
+            
+            String nombres=request.getParameter("nombres");
+            String apellidos=request.getParameter("apellidos");
+            String dni=request.getParameter("dni");
+            String celular=request.getParameter("celular");
+            
+            
+            int id_distrito=Integer.parseInt(request.getParameter("id_distrito"));
+            
+            String direccion=request.getParameter("direccion");
+            String correo=request.getParameter("correo");
+            String password=request.getParameter("password");
+            
+            String ubicacion_empleado=request.getParameter("ubicacion_empleado");
+            String estado_empleado=request.getParameter("estado_empleado");
+            String id_rol=request.getParameter("id_rol");
+            String id_vehiculo=request.getParameter("id_vehiculo");
+            
+            
+            
+            em.setNombres(nombres);
+            em.setApellidos(apellidos);
+            em.setDni(dni);
+            em.setCelular(celular);
+            em.setId_distrito(id_distrito);
+            em.setDireccion(direccion);
+            em.setCorreo(correo);
+            em.setPassword(password);
+            
+            em.setEstado_empleado(estado_empleado);
+            em.setUbicacion_empleado(ubicacion_empleado);
+            
+            
+            
+            cdao.add(c);
+            acceso=listarclientes;
+        }else if(action.equalsIgnoreCase("editarclientes")){
+            request.setAttribute("idcliente", request.getParameter("id"));
+            acceso=editclientes;
+            
+        }else if(action.equalsIgnoreCase("Actualizar Cliente")){
+            
+            
+            
+            String nombres=request.getParameter("nombres");
+            String apellidos=request.getParameter("apellidos");
+            String dni=request.getParameter("dni");
+            String celular=request.getParameter("celular");
+            
+            
+            int id_distrito=Integer.parseInt(request.getParameter("id_distrito"));
+            
+            String direccion=request.getParameter("direccion");
+            String correo=request.getParameter("correo");
+            String password=request.getParameter("password");
+            int id=Integer.parseInt(request.getParameter("id"));
+            
+            c.setNombres(nombres);
+            c.setApellidos(apellidos);
+            c.setDni(dni);
+            c.setCelular(celular);
+            c.setId_distrito(id_distrito);
+            c.setDireccion(direccion);
+            c.setCorreo(correo);
+            c.setPassword(password);
+            c.setId(id);
+            cdao.edit(c);
+            acceso=listarclientes;
+            
+            
+        }else if(action.equalsIgnoreCase("eliminarclientes")){
+            int id=Integer.parseInt(request.getParameter("id"));
+            c.setId(id);
+            cdao.eliminar(id);
+            acceso=listarclientes;
+            
+            
+        }else if(action.equalsIgnoreCase("listarplatos")){
+            acceso=listarplatos;
+        }else if(action.equalsIgnoreCase("listarvehiculos")){
+            acceso=listarvehiculos;
+        }
+        
+        
+        RequestDispatcher vista=request.getRequestDispatcher(acceso);
+        vista.forward(request, response);
+        
     }
 
     /**

@@ -15,10 +15,11 @@ public class Persona {
     protected String apellidos;
     protected String dni;
     protected String celular;
-    
     protected String direccion;
     protected String correo;
     protected String password;
+    
+    
     
     protected int id_distrito;
 
