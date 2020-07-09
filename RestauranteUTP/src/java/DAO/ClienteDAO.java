@@ -157,4 +157,54 @@ public class ClienteDAO implements CRUDcliente{
         
     }
     
+    @Override
+    public boolean Registrar(Persona user) {
+        String sql="INSERT INTO cliente (nombre_cliente,apellidos_cliente,dni_cliente,celular_cliente,direccion_cliente,correo_cliente,password_cliente,id_distrito) VALUES (?,?,?,?,?,?,?,?);";
+
+        
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+ 
+            ps.setString(1,user.getNombres());
+            ps.setString(2,user.getApellidos());
+            ps.setString(3,user.getDni());
+            ps.setString(4,user.getCelular());
+            ps.setString(5,user.getDireccion());
+            ps.setString(6,user.getCorreo());
+            ps.setString(7,user.getPassword());
+            ps.setInt(8,user.getId_distrito());
+            
+            if(ps.executeUpdate()==1){
+                return true;
+            }
+            System.out.println("inserto");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            try {
+                if(ps!=null)ps.close();
+            } catch (Exception e) {
+            }
+        }
+        
+        return false;
+    }
+    
+    public static void main(String[] args) {
+        Persona persona=new Persona();
+        persona.setNombres("karlo");
+        persona.setApellidos("mollo");
+        persona.setDni("72564865");
+        persona.setCelular("941352010");
+        persona.setDireccion("cercado");
+        persona.setCorreo("karlo@gmail.com");
+        persona.setPassword("karlo");
+        persona.setId_distrito(4);
+        
+        ClienteDAO clienteDAO=new ClienteDAO();
+        clienteDAO.Registrar(persona);
+        
+    }
+    
 }

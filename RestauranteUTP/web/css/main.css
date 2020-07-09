@@ -17,126 +17,153 @@ and open the template in the editor.
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:400,500&displayswap');
 
 *{
-	box-sizing: border-box;
-
+    box-sizing: border-box;
+    
 } 
 body{
-	
-	font-family: 'Open Sans', sans-serif;
-	alignment-adjust: central;
-	
-	justify-content: center;
-	min-height: 100vh;
-	
+    
+    font-family: 'Open Sans', sans-serif;
+    alignment-adjust: central;
+    
+    justify-content: center;
+    min-height: 100vh;
+    
 }
 
 .cont{
-	background-color: #fff;
-	border-radius: 5px;
-	border: 1px solid purple;
-	overflow: hidden;
-	width: 400px;
-	max-width: 100%;
-        margin-left: auto;
-        margin-right: auto; 
-        margin-top: 50px;
-          
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid purple;
+    overflow: hidden;
+    width: 400px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto; 
+    margin-top: 50px;
+    
 }
 
 .head{
-	border-bottom: 1px solid #f0f0f0;
-	background-color: #f7f7f7;
-	padding: 20px 40px;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #f7f7f7;
+    padding: 20px 40px;
 }
 
 .head h2{
-	margin: 0;
-
+    margin: 0;
+    
 }
 
 .formsesion{
-	padding: 30px 40px;
-        
-        
+    padding: 30px 40px;
+    
+    
 }
 
 
 
 .formcontrol{
-	margin-bottom: 10px;
-	padding-bottom: 20px;
-	position: relative;
-        
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+    
 }
 
 .formcontrol label{
-	display: inline-block;
-	margin-bottom: 5px;
+    display: inline-block;
+    margin-bottom: 5px;
 }
 
 .formcontrol input{
-	border: 2px solid #f0f0f0;
-	border-radius: 4px;
-	display: block;
-	font-family: inherit;
-	font-size: 14px;
-	padding: 10px;
-	width: 100%;
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
 }
 
 .formcontrol input:focus{
-	outline: 0;
-	border-color: #777;
+    outline: 0;
+    border-color: #777;
+    
+}
 
+.formcontrol select{
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 12px;
+    width: 100%;
+}
+
+.formcontrol select:focus{
+    outline: 0;
+    border-color: #777;
+    
 }
 
 .formcontrol.success input{
-	border-color: #2ecc71;
+    border-color: #2ecc71;
 }
 
 .formcontrol.error input{
-	border-color: red;
+    border-color: red;
+}
+
+.formcontrol.success select{
+    border-color: #2ecc71;
+}
+
+.formcontrol.error select{
+    border-color: red;
 }
 .formcontrol i{
-	visibility: hidden;
-	position: absolute;
-	top: 40px;
-	right: 10px;
+    visibility: hidden;
+    position: absolute;
+    top: 40px;
+    right: 10px;
 }
 
 .formcontrol.success i.fa-check-circle{
-	color: #2ecc71;
-	visibility: visible;
-
+    color: #2ecc71;
+    visibility: visible;
+    padding-right: 8px;
+    
+    
 }
 .formcontrol.error i.fa-exclamation-circle{
-	color: red;
-	visibility: visible;
-	
+    color: red;
+    visibility: visible;
+    padding-right: 8px;
+    
 }
 
 .formcontrol small{
-	color: #e74c3c;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	visibility: hidden;
+    color: #e74c3c;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
 }
 
 
 .formcontrol.error small{
- 	visibility: visible;
+    visibility: visible;
 }		
 
 .btn-send{
-	background-color: #9b59b6;
-	border: 2px solid #9b59b6;
-	border-radius: 4px;
-	color: #fff;
-	display: block;
-	font-family: inherit;
-	font-size: 16px;
-	padding: 10px;
-	margin-top: 20px;
-	width: 100%;
+    background-color: #9b59b6;
+    border: 2px solid #9b59b6;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
 }

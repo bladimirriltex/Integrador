@@ -20,6 +20,5 @@ public interface CRUDcliente {
     public boolean edit(Cliente c);
     public boolean eliminar(int id);
     public Cliente IniciarSesion(Persona persona);
-    
-    
+    public boolean Registrar(Persona persona);
 }
