@@ -12,7 +12,7 @@
         <link href="css/main.css" rel="stylesheet" type="text/css"/>
         <title>Hello, world!</title>
     </head>
-    <body >
+    <body>
         <%  String alert=(String)request.getAttribute("sms");
             String alerta="";
             if(alert!=null)alerta=alert;

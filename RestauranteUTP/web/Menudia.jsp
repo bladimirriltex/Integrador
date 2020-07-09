@@ -22,212 +22,207 @@
         <!-- Menu del dia o carta del dia -->
         <!-- img 286 x 214.49 -->
         <div class="container text-center pt-5">
-            <h3>Carta del Día</h3>
-            <div class="card mx-5">
-                <div class="card-header">
-                    Entradas
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Entradas</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Segundos</a>
+                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Extras</a>
                 </div>
-                <div class="card-body">
-                    <div class="form-row">
-                        <div class="col-md-4 mb-3">
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Titulo del Plato</h5>
-                                    <p class="card-text">Descripcion del plato.</p>
+            </nav>
+            <div class="tab-content bg-light" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Titulo del Plato</h5>
+                                        <p class="card-text">Descripcion del plato.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Precio: S/. 20</li>
+                                        <li class="list-group-item">Stock: 20</li>
+                                        
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
+                                        
+                                    </div>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Precio: S/. 20</li>
-                                    <li class="list-group-item">Stock: 20</li>
-                                    
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="btn btn-outline-danger">Seleccionar</a>
-                                    
+                            </div>  
+                            
+                            
+                            <div class="col-md-4 mb-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Titulo del Plato</h5>
+                                        <p class="card-text">Descripcion del plato.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Precio: S/. 20</li>
+                                        <li class="list-group-item">Stock: 20</li>
+                                        
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
+                                        
+                                    </div>
                                 </div>
-                            </div>
-                        </div>  
-                        
-                        
-                        <div class="col-md-4 mb-3">
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Titulo del Plato</h5>
-                                    <p class="card-text">Descripcion del plato.</p>
+                            </div> 
+                            
+                            
+                            <div class="col-md-4 mb-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Titulo del Plato</h5>
+                                        <p class="card-text">Descripcion del plato.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Precio: S/. 20</li>
+                                        <li class="list-group-item">Stock: 20</li>
+                                        
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
+                                        
+                                    </div>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Precio: S/. 20</li>
-                                    <li class="list-group-item">Stock: 20</li>
-                                    
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="btn btn-outline-danger">Seleccionar</a>
-                                    
-                                </div>
-                            </div>
-                        </div> 
-                        
-                        
-                        <div class="col-md-4 mb-3">
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Titulo del Plato</h5>
-                                    <p class="card-text">Descripcion del plato.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Precio: S/. 20</li>
-                                    <li class="list-group-item">Stock: 20</li>
-                                    
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="btn btn-outline-danger">Seleccionar</a>
-                                    
-                                </div>
-                            </div>
-                        </div> 
-                        
+                            </div> 
+                            
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            
-            <div class="card mx-5 my-4">
-                <div class="card-header">
-                    Segundos
-                </div>
-                <div class="card-body">
-                    <div class="form-row">
-                        <div class="col-md-4 mb-3">
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Titulo del Plato</h5>
-                                    <p class="card-text">Descripcion del plato.</p>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Titulo del Plato</h5>
+                                        <p class="card-text">Descripcion del plato.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Precio: S/. 20</li>
+                                        <li class="list-group-item">Stock: 20</li>
+                                        
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
+                                        
+                                    </div>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Precio: S/. 20</li>
-                                    <li class="list-group-item">Stock: 20</li>
-                                    
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="btn btn-outline-danger">Seleccionar</a>
-                                    
+                            </div>  
+                            
+                            
+                            <div class="col-md-4 mb-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Titulo del Plato</h5>
+                                        <p class="card-text">Descripcion del plato.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Precio: S/. 20</li>
+                                        <li class="list-group-item">Stock: 20</li>
+                                        
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
+                                        
+                                    </div>
                                 </div>
-                            </div>
-                        </div>  
-                        
-                        
-                        <div class="col-md-4 mb-3">
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Titulo del Plato</h5>
-                                    <p class="card-text">Descripcion del plato.</p>
+                            </div> 
+                            
+                            
+                            <div class="col-md-4 mb-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Titulo del Plato</h5>
+                                        <p class="card-text">Descripcion del plato.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Precio: S/. 20</li>
+                                        <li class="list-group-item">Stock: 20</li>
+                                        
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
+                                        
+                                    </div>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Precio: S/. 20</li>
-                                    <li class="list-group-item">Stock: 20</li>
-                                    
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="btn btn-outline-danger">Seleccionar</a>
-                                    
-                                </div>
-                            </div>
-                        </div> 
-                        
-                        
-                        <div class="col-md-4 mb-3">
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Titulo del Plato</h5>
-                                    <p class="card-text">Descripcion del plato.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Precio: S/. 20</li>
-                                    <li class="list-group-item">Stock: 20</li>
-                                    
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="btn btn-outline-danger">Seleccionar</a>
-                                    
-                                </div>
-                            </div>
-                        </div> 
-                        
+                            </div> 
+                            
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            
-            <div class="card mx-5 my-4">
-                <div class="card-header">
-                    Extras
-                </div>
-                <div class="card-body">
-                    <div class="form-row">
-                        <div class="col-md-4 mb-3">
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Titulo del Plato</h5>
-                                    <p class="card-text">Descripcion del plato.</p>
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Titulo del Plato</h5>
+                                        <p class="card-text">Descripcion del plato.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Precio: S/. 20</li>
+                                        <li class="list-group-item">Stock: 20</li>
+                                        
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
+                                        
+                                    </div>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Precio: S/. 20</li>
-                                    <li class="list-group-item">Stock: 20</li>
-                                    
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="btn btn-outline-danger">Seleccionar</a>
-                                    
+                            </div>  
+                            
+                            
+                            <div class="col-md-4 mb-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Titulo del Plato</h5>
+                                        <p class="card-text">Descripcion del plato.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Precio: S/. 20</li>
+                                        <li class="list-group-item">Stock: 20</li>
+                                        
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
+                                        
+                                    </div>
                                 </div>
-                            </div>
-                        </div>  
-                        
-                        
-                        <div class="col-md-4 mb-3">
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Titulo del Plato</h5>
-                                    <p class="card-text">Descripcion del plato.</p>
+                            </div> 
+                            
+                            
+                            <div class="col-md-4 mb-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Titulo del Plato</h5>
+                                        <p class="card-text">Descripcion del plato.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Precio: S/. 20</li>
+                                        <li class="list-group-item">Stock: 20</li>
+                                        
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
+                                        
+                                    </div>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Precio: S/. 20</li>
-                                    <li class="list-group-item">Stock: 20</li>
-                                    
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="btn btn-outline-danger">Seleccionar</a>
-                                    
-                                </div>
-                            </div>
-                        </div> 
-                        
-                        
-                        <div class="col-md-4 mb-3">
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Titulo del Plato</h5>
-                                    <p class="card-text">Descripcion del plato.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Precio: S/. 20</li>
-                                    <li class="list-group-item">Stock: 20</li>
-                                    
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="btn btn-outline-danger">Seleccionar</a>
-                                    
-                                </div>
-                            </div>
-                        </div> 
-                        
+                            </div> 
+                            
+                        </div>
                     </div>
                 </div>
             </div>

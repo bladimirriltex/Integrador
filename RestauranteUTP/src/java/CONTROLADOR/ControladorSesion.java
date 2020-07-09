@@ -6,7 +6,7 @@
 package CONTROLADOR;
 
 import DAO.ClienteDAO;
-import DAO.empleadoDAO;
+import DAO.EmpleadoDAO;
 import DTO.Cliente;
 import DTO.Persona;
 import java.io.IOException;
@@ -90,7 +90,7 @@ public class ControladorSesion extends HttpServlet {
             usercontex(request, response, per,"Menudia.jsp");
         }else if(per.getCorreo().length()==6){
             
-            empleadoDAO empleadoDAO=new empleadoDAO();
+            EmpleadoDAO empleadoDAO=new EmpleadoDAO();
             
             char charAt =per.getCorreo().charAt(0);
             char[] Char = {'a', 'c', 'r'};

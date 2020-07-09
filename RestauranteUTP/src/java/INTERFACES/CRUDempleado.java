@@ -7,14 +7,15 @@ package INTERFACES;
 
 
 import DTO.Persona;
-import DTO.empleado;
+import DTO.Empleado;
+import java.util.List;
 
 /**
  *
  * @author Edú
  */
 public interface CRUDempleado {
-    public empleado IniciarSesion(Persona persona);
+    public Empleado IniciarSesion(Persona persona);
     public List listar();
     public Empleado list(int id_empleado);
     public boolean add(Empleado em);
@@ -22,4 +23,4 @@ public interface CRUDempleado {
     public boolean eliminar(int id_empleado);
     
 }
->>>>>>> 4566e7b1de4b20a0c9097343399aef4080599f17
+
