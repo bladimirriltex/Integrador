@@ -5,8 +5,12 @@
  */
 package CONTROLADOR;
 
+<<<<<<< HEAD
 import DAO.EmpleadoDAO;
 import DTO.Empleado;
+=======
+import DTO.Persona;
+>>>>>>> 4566e7b1de4b20a0c9097343399aef4080599f17
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -174,6 +178,10 @@ public class ControladorEmpleado extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        
+        
+        
     }
 
     /**

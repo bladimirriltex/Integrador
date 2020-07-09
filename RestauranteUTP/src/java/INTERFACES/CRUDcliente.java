@@ -6,6 +6,7 @@
 package INTERFACES;
 
 import DTO.Cliente;
+import DTO.Persona;
 import java.util.List;
 
 /**
@@ -18,6 +19,6 @@ public interface CRUDcliente {
     public boolean add(Cliente c);
     public boolean edit(Cliente c);
     public boolean eliminar(int id);
-    
-    
+    public Cliente IniciarSesion(Persona persona);
+    public boolean Registrar(Persona persona);
 }
