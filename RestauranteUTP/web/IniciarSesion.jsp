@@ -13,12 +13,21 @@
         <title>Hello, world!</title>
     </head>
     <body >
+        <%  String alert=(String)request.getAttribute("sms");
+            String alerta="";
+            if(alert!=null)alerta=alert;
+                
+        %>
+        
+        
+            <%= alerta %>
         
         
         <div class="cont">
             <div class="head">
-                <h2>Crear cuenta</h2>
+                <h2>Iniciar Sesion</h2>
             </div>
+            
             <form action="ControladorSesion" method="post" class="formsesion">
                 
                 

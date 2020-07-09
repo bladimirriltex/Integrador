@@ -87,50 +87,27 @@ public class ControladorSesion extends HttpServlet {
             ClienteDAO clienteDAO=new ClienteDAO();
             
             per=clienteDAO.IniciarSesion(per);
-            if(per==null){
-                request.setAttribute("mensaje", "Error usuario y/o clave");
-                request.getRequestDispatcher("IniciarSesion.jsp").forward(request, response);
-            }else if (per!= null) {
-                request.setAttribute("usuario",per);
-                request.getRequestDispatcher("Menudia.jsp").forward(request, response);
-            }
+            usercontex(request, response, per,"Menudia.jsp");
         }else if(per.getCorreo().length()==6){
+            
+            empleadoDAO empleadoDAO=new empleadoDAO();
             
             char charAt =per.getCorreo().charAt(0);
             char[] Char = {'a', 'c', 'r'};
+            
             if(Char[0]==charAt){
-                System.out.println("es admin");
-                empleadoDAO empleadoDAO=new empleadoDAO();
                 per=empleadoDAO.IniciarSesion(per);
-                if(per==null){
-                    request.setAttribute("mensaje", "Error usuario y/o clave");
-                    request.getRequestDispatcher("IniciarSesion.jsp").forward(request, response);
-                }else if (per!= null){
-                    request.setAttribute("usuario",per);
-                    request.getRequestDispatcher("administrador.jsp").forward(request, response);
-                }                
+                usercontex(request, response, per,"administrador.jsp");
             }else if (Char[1]==charAt){
                 System.out.println("es cocinero");
-                empleadoDAO empleadoDAO=new empleadoDAO();
+                
                 per=empleadoDAO.IniciarSesion(per);
-                if(per==null){
-                    request.setAttribute("mensaje", "Error usuario y/o clave");
-                    request.getRequestDispatcher("IniciarSesion.jsp").forward(request, response);
-                }else if (per!= null){
-                    request.setAttribute("usuario",per);
-                    request.getRequestDispatcher("cocinero.jsp").forward(request, response);
-                }
+                usercontex(request, response, per,"cocinero.jsp");
             }else if (Char[2]==charAt) {
                 System.out.println("es repartidor");
-                empleadoDAO empleadoDAO=new empleadoDAO();
+                
                 per=empleadoDAO.IniciarSesion(per);
-                if(per==null){
-                    request.setAttribute("mensaje", "Error usuario y/o clave");
-                    request.getRequestDispatcher("IniciarSesion.jsp").forward(request, response);
-                }else if (per!= null){
-                    request.setAttribute("usuario",per);
-                    request.getRequestDispatcher("admin.jsp").forward(request, response);
-                }                
+                usercontex(request, response, per,"repartidor.jsp");
             }
             
         }else{
@@ -150,5 +127,15 @@ public class ControladorSesion extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    public void usercontex(HttpServletRequest request, HttpServletResponse response,Persona per, String contextrue)throws ServletException, IOException {
+        if(per==null){
+            request.setAttribute("mensaje", "Error usuario y/o clave");
+            request.getRequestDispatcher("IniciarSesion.jsp").forward(request, response);
+        }else if (per!= null){
+            request.setAttribute("usuario",per);
+            request.getRequestDispatcher(contextrue).forward(request, response);
+        }
+    }
     
 }
