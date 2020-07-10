@@ -30,7 +30,7 @@ public class PlatoDAO implements CRUDplato{
     
 
     @Override
-    public List listar() {
+    public  List listar() {
         ArrayList<Plato> list = new ArrayList<>();
         String sql="select * from plato";
         try{
@@ -112,5 +112,17 @@ public class PlatoDAO implements CRUDplato{
         }return false;
     }
 
+    
+    public static void main(String[] args) {
+        List<Plato> listplato=new ArrayList<Plato>();
+        
+        PlatoDAO dAO=new PlatoDAO();
+
+        listplato=dAO.listar();
+        
+        for (Plato plato : listplato) {
+            System.out.println(plato.getNombre_plato());
+        }
+    }
     
 }

@@ -41,8 +41,8 @@ body{
     max-width: 100%;
     margin-left: auto;
     margin-right: auto; 
-    margin-top: 80px;
-  
+    margin-top: 180px;
+    
     
 }
 
@@ -172,8 +172,9 @@ body{
     width: 100%;
 }
 #exitoalert{
-	width: 40%;
-	float: right;
-	margin-top: 10px;
-	margin-right: 10px;
+    width: 40%;
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
 }
+

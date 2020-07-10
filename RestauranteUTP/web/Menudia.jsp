@@ -4,6 +4,10 @@
     Author     : Edú
 --%>
 
+<%@page import="DAO.PlatoDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="DTO.Plato"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,37 +16,53 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <%@include file="header.jsp" %>
+        
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         
         <title>Hello, world!</title>
     </head>
     <body >
+        <%  List<Plato> listplato=new ArrayList<Plato>();
+        
+        PlatoDAO dAO=new PlatoDAO();
+
+        listplato=dAO.listar();
+        
+        for (Plato plato : listplato) {
+            System.out.println(plato.getNombre_plato());
+        }
+            
+        %>
         
         <!-- Menu del dia o carta del dia -->
         <!-- img 286 x 214.49 -->
-        <div class="container text-center pt-5">
+        <div class="container text-center pt-5 mt-5">
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active text-dark" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Entradas</a>
-                    <a class="nav-item nav-link text-dark" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Segundos</a>
-                    <a class="nav-item nav-link text-dark" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Extras</a>
+                    <a class="nav-item nav-link active text-dark" id="nav-home-tab" data-toggle="tab" href="#nav-entradas" role="tab" aria-controls="nav-entradas" aria-selected="true">Entradas</a>
+                    <a class="nav-item nav-link text-dark" id="nav-profile-tab" data-toggle="tab" href="#nav-segundos" role="tab" aria-controls="nav-segundos" aria-selected="false">Segundos</a>
+                    <a class="nav-item nav-link text-dark" id="nav-contact-tab" data-toggle="tab" href="#nav-extras" role="tab" aria-controls="nav-extras" aria-selected="false">Extras</a>
                 </div>
             </nav>
             <div class="tab-content bg-light" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="tab-pane fade show active" id="nav-entradas" role="tabpanel" aria-labelledby="nav-entradas-tab">
                     <div class="card-body">
                         <div class="form-row">
-                            <div class="col-md-4 mb-3">
+                            <% 
+                            for (Plato plato : listplato) {
+                                    if (plato.getId_tipo()==1) {%>
+                                    
+                            <div class="col-md-4 mb-3 mr-auto">
                                 <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
+                                    <img class="card-img-top" src="<%= plato.getImagen()%>" alt="Card image cap">
                                     <div class="card-body">
-                                        <h5 class="card-title">Titulo del Plato</h5>
+                                        <h5 class="card-title"><%= plato.getNombre_plato()%></h5>
                                         <p class="card-text">Descripcion del plato.</p>
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Precio: S/. 20</li>
-                                        <li class="list-group-item">Stock: 20</li>
+                                        <li class="list-group-item">Precio del palto: S/. <%= plato.getPrecio_plato()%> </li>
+                                        <li class="list-group-item">Stock: <%= plato.getStock()%></li>
                                         
                                     </ul>
                                     <div class="card-body">
@@ -50,19 +70,34 @@
                                         
                                     </div>
                                 </div>
-                            </div>  
-                            
-                            
-                            <div class="col-md-4 mb-3">
+                            </div>
+                                               
+                        <%                }
+                                }
+                        
+                        %>
+                        
+                    </div>   
+                </div>      
+                    
+                </div>
+                <div class="tab-pane fade" id="nav-segundos" role="tabpanel" aria-labelledby="nav-segundos-tab">
+                    <div class="card-body">
+                        <div class="form-row">
+                            <% 
+                            for (Plato plato : listplato) {
+                                    if (plato.getId_tipo()==2) {%>
+                                    
+                            <div class="col-md-4 mb-3 mr-auto">
                                 <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
+                                    <img class="card-img-top" src="<%= plato.getImagen()%>" alt="Card image cap">
                                     <div class="card-body">
-                                        <h5 class="card-title">Titulo del Plato</h5>
+                                        <h5 class="card-title"><%= plato.getNombre_plato()%></h5>
                                         <p class="card-text">Descripcion del plato.</p>
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Precio: S/. 20</li>
-                                        <li class="list-group-item">Stock: 20</li>
+                                        <li class="list-group-item">Precio del palto: S/. <%= plato.getPrecio_plato()%> </li>
+                                        <li class="list-group-item">Stock: <%= plato.getStock()%></li>
                                         
                                     </ul>
                                     <div class="card-body">
@@ -70,44 +105,33 @@
                                         
                                     </div>
                                 </div>
-                            </div> 
-                            
-                            
-                            <div class="col-md-4 mb-3">
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Titulo del Plato</h5>
-                                        <p class="card-text">Descripcion del plato.</p>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Precio: S/. 20</li>
-                                        <li class="list-group-item">Stock: 20</li>
-                                        
-                                    </ul>
-                                    <div class="card-body">
-                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
-                                        
-                                    </div>
-                                </div>
-                            </div> 
+                            </div>
+                                               
+                        <%                }
+                                }
+                        
+                        %>
                             
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <div class="tab-pane fade" id="nav-extras" role="tabpanel" aria-labelledby="nav-extras-tab">
                     <div class="card-body">
                         <div class="form-row">
-                            <div class="col-md-4 mb-3">
+                            <% 
+                            for (Plato plato : listplato) {
+                                    if (plato.getId_tipo()==3) {%>
+                                    
+                            <div class="col-md-4 mb-3 mr-auto">
                                 <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
+                                    <img class="card-img-top" src="<%= plato.getImagen()%>" alt="Card image cap">
                                     <div class="card-body">
-                                        <h5 class="card-title">Titulo del Plato</h5>
+                                        <h5 class="card-title"><%= plato.getNombre_plato()%></h5>
                                         <p class="card-text">Descripcion del plato.</p>
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Precio: S/. 20</li>
-                                        <li class="list-group-item">Stock: 20</li>
+                                        <li class="list-group-item">Precio del palto: S/. <%= plato.getPrecio_plato()%> </li>
+                                        <li class="list-group-item">Stock: <%= plato.getStock()%></li>
                                         
                                     </ul>
                                     <div class="card-body">
@@ -115,112 +139,12 @@
                                         
                                     </div>
                                 </div>
-                            </div>  
-                            
-                            
-                            <div class="col-md-4 mb-3">
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Titulo del Plato</h5>
-                                        <p class="card-text">Descripcion del plato.</p>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Precio: S/. 20</li>
-                                        <li class="list-group-item">Stock: 20</li>
-                                        
-                                    </ul>
-                                    <div class="card-body">
-                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
-                                        
-                                    </div>
-                                </div>
-                            </div> 
-                            
-                            
-                            <div class="col-md-4 mb-3">
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Titulo del Plato</h5>
-                                        <p class="card-text">Descripcion del plato.</p>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Precio: S/. 20</li>
-                                        <li class="list-group-item">Stock: 20</li>
-                                        
-                                    </ul>
-                                    <div class="card-body">
-                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
-                                        
-                                    </div>
-                                </div>
-                            </div> 
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                    <div class="card-body">
-                        <div class="form-row">
-                            <div class="col-md-4 mb-3">
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Titulo del Plato</h5>
-                                        <p class="card-text">Descripcion del plato.</p>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Precio: S/. 20</li>
-                                        <li class="list-group-item">Stock: 20</li>
-                                        
-                                    </ul>
-                                    <div class="card-body">
-                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
-                                        
-                                    </div>
-                                </div>
-                            </div>  
-                            
-                            
-                            <div class="col-md-4 mb-3">
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Titulo del Plato</h5>
-                                        <p class="card-text">Descripcion del plato.</p>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Precio: S/. 20</li>
-                                        <li class="list-group-item">Stock: 20</li>
-                                        
-                                    </ul>
-                                    <div class="card-body">
-                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
-                                        
-                                    </div>
-                                </div>
-                            </div> 
-                            
-                            
-                            <div class="col-md-4 mb-3">
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="img/pollo.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Titulo del Plato</h5>
-                                        <p class="card-text">Descripcion del plato.</p>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Precio: S/. 20</li>
-                                        <li class="list-group-item">Stock: 20</li>
-                                        
-                                    </ul>
-                                    <div class="card-body">
-                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
-                                        
-                                    </div>
-                                </div>
-                            </div> 
+                            </div>
+                                               
+                        <%                }
+                                }
+                        
+                        %>
                             
                         </div>
                     </div>

@@ -13,14 +13,14 @@
         <link href="css/main.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <nav id="navegacion" class="navbar navbar-expand-sm navbar-light text-light px-5 fixed-top">
+        <nav id="navegacion" class="navbar navbar-expand-lg navbar-light text-light px-5 fixed-top">
             <a class="navbar-brand text-white" href="#">RestauranteUtp</a>
             <a class="navbar-brand" href="#"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav  ml-auto  ">
+                <div class="navbar-nav  ml-auto">
                     <a class="nav-item nav-link mx-2 text-white" href="index.html">Inicio</a>
                     <a class="nav-item nav-link mx-2 text-white" href="Menudia.jsp">Menu del dia</a>
                     <a class="nav-item nav-link mx-2 text-white" href="Ordenpedido.jsp">Mi pedido</a>

@@ -10,39 +10,75 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <%@include file="header.jsp" %>
+        <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link href="css/main.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        
+        <div id="wrapper">
+        
         <footer>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-bottom">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown link
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+            <div class="container pt-5 border-bottom fixed-bottom">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12 mb-3 text-center">
+                            
+                        </div>
+                        <div class="col-md-9 col-sm-12">
+                            
+                            <div class="col-md-3 col-sm-6 col-6 p-0 float-left mb-3">
+                                <h5 class="mb-4 font-weight-bold">SOLUCIONES</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="#">Ventas</a></li>
+                                    <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="#">Personal</a></li>
+                                    
+                                </ul>
                             </div>
-                        </li>
-                    </ul>
+                            
+                            <div class="col-md-3 col-sm-6 col-6 p-0 mb-3 float-left">
+                                <h5 class="mb-4 font-weight-bold text-uppercase">DESARROLLADORES</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="#">Edú Mollo</a></li>
+                                    <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="#">Gianpiero Montemayor</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="col-md-3 col-sm-6 col-6 mb-3 p-0 float-left">
+                                <h5 class="mb-4 font-weight-bold">RESTAURANTE</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="#"></i>Acerca de Nosotros</a></li>
+                                    <li class="list-group-item bg-transparent border-0 p-0 mb-2"><a href="#"></i> Blog</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="col-md-3 col-sm-6 col-6 mb-3 p-0 float-left">
+                                <h5 class="mb-4 font-weight-bold ">CONTACTO</h5>
+                                <ul class="list-group">
+                                    
+                                    <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+                                        <a href="https://twitter.com/naologicerp"><i class="fa fa-twitter mr-1"></i> Twitter</a>       
+                                    </li>
+                                    
+                                    
+                                    
+                                    <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+                                        <a href="https://www.facebook.com/naologic/" target="_blank"><i class="fa fa-facebook mr-1"></i> Facebook</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-12">
+                            <div class="py-4 d-flex justify-content-center align-items-center">
+                                <a class="mr-4" href="../privacy.html">Terminos y politicas de privacidad</a>
+                                <a href="../sitemap.xml">Ecuentranos</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </nav>
-        </footer>/>
+        </footer>
+        </div>
+        
     </body>
 </html>
