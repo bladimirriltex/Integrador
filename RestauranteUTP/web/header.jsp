@@ -13,7 +13,7 @@
         <link href="css/main.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <nav id="navegacion" class="navbar navbar-expand-sm navbar-light text-light px-5">
+        <nav id="navegacion" class="navbar navbar-expand-sm navbar-light text-light px-5 fixed-top">
             <a class="navbar-brand text-white" href="#">RestauranteUtp</a>
             <a class="navbar-brand" href="#"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
