@@ -81,8 +81,8 @@
                                 
                                 
                                 <td>
-                                    <a class="btn btn-warning btn-sm" href="ControladorEmpleado?accion=editarempleados&id=<%= em.getId_vehiculo() %>">Editar</a>
-                                    <a class="btn btn-danger btn-sm" href="ControladorEmpleado?accion=eliminarempleados&id=<%= em.getId_vehiculo() %>">Eliminar</a>
+                                    <a class="btn btn-warning btn-sm" href="ControladorEmpleado?accion=editarempleados&id=<%= em.getId() %>">Editar</a>
+                                    <a class="btn btn-danger btn-sm" href="ControladorEmpleado?accion=eliminarempleados&id=<%= em.getId() %>">Eliminar</a>
                                 </td>
                                 </tr>
                                 <%
