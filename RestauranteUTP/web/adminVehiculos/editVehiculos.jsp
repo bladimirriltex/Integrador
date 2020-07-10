@@ -26,13 +26,13 @@
            %>
            
             <h1>Modificar Vehiculo</h1>
-            <form action="Controlador">
+            <form action="ControladorVehiculo">
                 Placa:<br>
-                <input class="form-control" type="text" value="<%= v.getPlaca() %>" name="nombre_plato"><br>
+                <input class="form-control" type="text" value="<%= v.getPlaca() %>" name="placa"><br>
                 Tipo:<br>
-                <input class="form-control" type="text" value="<%= v.getTipo() %>" name="precio_plato"><br>
+                <input class="form-control" type="text" value="<%= v.getTipo() %>" name="tipo"><br>
                 Soat:<br>
-                <input class="form-control" type="text" value="<%= v.getSoat() %>" name="imagen"><br>
+                <input class="form-control" type="text" value="<%= v.getSoat() %>" name="soat"><br>
                 
                 
                 

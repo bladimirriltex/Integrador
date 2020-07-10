@@ -109,7 +109,7 @@ public class ControladorVehiculo extends HttpServlet {
             
             
         }else if(action.equalsIgnoreCase("eliminarvehiculos")){
-            int id_vehiculo=Integer.parseInt(request.getParameter("id_vehiculo"));
+            int id_vehiculo=Integer.parseInt(request.getParameter("id"));
             v.setId_vehiculo(id_vehiculo);
             vdao.eliminar(id_vehiculo);
             acceso=listarvehiculos;

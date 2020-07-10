@@ -26,7 +26,7 @@
            %>
            
             <h1>Modificar Plato</h1>
-            <form action="Controlador">
+            <form action="ControladorPlato">
                 Nombre plato:<br>
                 <input class="form-control" type="text" value="<%= pl.getNombre_plato() %>" name="nombre_plato"><br>
                 Precio del plato:<br>

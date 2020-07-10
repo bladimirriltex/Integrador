@@ -87,7 +87,7 @@ public class VehiculoDAO implements CRUDvehiculo{
 
     @Override
     public boolean edit(Vehiculo v) {
-            String sql="UPDATE vehiculo SET placa = '"+v.getPlaca()+"', tipo= '"+v.getTipo()+"', soat= '"+v.getSoat()+"' where id_cliente= "+v.getId_vehiculo();
+            String sql="UPDATE vehiculo SET placa = '"+v.getPlaca()+"', tipo= '"+v.getTipo()+"', soat= '"+v.getSoat()+"' where id_vehiculo= "+v.getId_vehiculo();
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);

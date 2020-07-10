@@ -17,17 +17,37 @@
             <div class="col-lg-8">
             <h1>Agregar Empleado</h1>
             <form action="ControladorEmpleado">
-                Placa:<br>
-                <input class="form-control" type="text" name="placa"><br>
-                Tipo:<br>
-                <input class="form-control" type="text" name="tipo"><br>
-                Soat:<br>
-                <input class="form-control" type="text" name="soat"><br>
+                Nombres:<br>
+                <input class="form-control" type="text" name="nombres"><br>
+                Apellidos:<br>
+                <input class="form-control" type="text" name="apellidos"><br>
+                DNI:<br>
+                <input class="form-control" type="text" name="dni"><br>
+                Celular:<br>
+                <input class="form-control" type="text" name="celular"><br>
+                Distrito:<br>
+                <input class="form-control" type="text" name="id_distrito"><br>
+                Direccion:<br>
+                <input class="form-control" type="text" name="direccion"><br>
+                Correo:<br>
+                <input class="form-control" type="text" name="correo"><br>
+                Password:<br>
+                <input class="form-control" type="text" name="password"><br>
+                
+                
+                Ubicacion:<br>
+                <input class="form-control" type="text" name="ubicacion_empleado"><br>
+                Estado:<br>
+                <input class="form-control" type="text" name="estado_empleado"><br>
+                Rol:<br>
+                <input class="form-control" type="text" name="id_rol"><br>
+                Vehiculo:<br>
+                <input class="form-control" type="text" name="id_vehiculo"><br>
                 
                 
                 
-                <input class="btn btn-warning btn-sm" type="submit" name="accion" value="Agregar Vehiculo"><br>
-                <a href="ControladorVehiculo?accion=listarvehiculos">Regresar</a>
+                <input class="btn btn-warning btn-sm" type="submit" name="accion" value="Agregar Empleado"><br>
+                <a href="ControladorEmpleado?accion=listarempleados">Regresar</a>
             </form>
             </div>
         </div>

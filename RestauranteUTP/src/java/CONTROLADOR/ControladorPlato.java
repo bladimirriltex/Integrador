@@ -115,7 +115,18 @@ public class ControladorPlato extends HttpServlet {
             
             
             
-            int id_plato=Integer.parseInt(request.getParameter("id"));
+            int id_plato=Integer.parseInt(request.getParameter("id_plato"));
+            
+            
+            pl.setNombre_plato(nombre_plato);
+            pl.setPrecio_plato(precio_plato);
+            pl.setImagen(imagen);
+            pl.setStock(stock);
+            pl.setId_tipo(id_tipo);
+            pl.setId_plato(id_plato);
+            
+            
+            
             
             
             pldao.edit(pl);
@@ -123,7 +134,7 @@ public class ControladorPlato extends HttpServlet {
             
             
         }else if(action.equalsIgnoreCase("eliminarplatos")){
-            int id_plato=Integer.parseInt(request.getParameter("id_plato"));
+            int id_plato=Integer.parseInt(request.getParameter("id"));
             pl.setId_plato(id_plato);
             pldao.eliminar(id_plato);
             acceso=listarplatos;
