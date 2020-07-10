@@ -2,8 +2,9 @@ function validarSesion(){
     var email=document.getElementById('email'), password=document.getElementById('password');
     var emailval=email.value, passwordval=password.value;
     var expresion= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-    if(emailval=='' || emailval==null){
+    if(emailval=='' && passwordval==''){
         setErrorFor(email,'El campo no puede quedar vacio');
+        setErrorFor(password,'El campo no puede quedar vacio');
         return false;
     }else{
         setSuccessFor(email);

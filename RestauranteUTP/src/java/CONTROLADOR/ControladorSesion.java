@@ -131,7 +131,12 @@ public class ControladorSesion extends HttpServlet {
     
     public void usercontex(HttpServletRequest request, HttpServletResponse response,Persona per, String contextrue)throws ServletException, IOException {
         if(per==null){
-            request.setAttribute("mensaje", "Error usuario y/o clave");
+            request.setAttribute("sms", "<div class=\"alert alert-danger alert-dismissible fade show\"  id=\"exitoalert\" role=\"alert\">\n" +
+"		<strong>Oh!</strong>Ocurrio un error <strong>revise su usuario o contraseña.</strong>\n" +
+"		<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+"			<span aria-hidden=\"true\">&times;</span>\n" +
+"		</button>\n" +
+"	</div>");
             request.getRequestDispatcher("IniciarSesion.jsp").forward(request, response);
         }else if (per!= null){
             request.setAttribute("usuario",per);

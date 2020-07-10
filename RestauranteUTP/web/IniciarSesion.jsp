@@ -14,6 +14,8 @@
         <title>Hello, world!</title>
     </head>
     <body>
+        
+        <div>
         <%  String alert=(String)request.getAttribute("sms");
             String alerta="";
             if(alert!=null)alerta=alert;
@@ -23,7 +25,7 @@
         
             <%= alerta %>
         
-        
+        </div>
         <div class="cont">
             <div class="head">
                 <h2>Iniciar Sesion</h2>
@@ -33,7 +35,7 @@
                 
                 
                 <div class="formcontrol">
-                    <label for="email">E-mail</label>
+                    <label for="email">Usuario</label>
                     <input type="text" placeholder="abc@gmail.com" id="email" name="email">
                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                     <i class="fa fa-exclamation-circle" aria-hidden="true"></i> 
