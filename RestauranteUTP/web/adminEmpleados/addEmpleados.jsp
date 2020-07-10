@@ -10,13 +10,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <title>Añadir Nuevo Vehiculo</title>
+        <title>Añadir Nuevo Empleado</title>
     </head>
     <body>
         <div class="container">
             <div class="col-lg-8">
-            <h1>Agregar Vehiculo</h1>
-            <form action="ControladorVehiculo">
+            <h1>Agregar Empleado</h1>
+            <form action="ControladorEmpleado">
                 Placa:<br>
                 <input class="form-control" type="text" name="placa"><br>
                 Tipo:<br>

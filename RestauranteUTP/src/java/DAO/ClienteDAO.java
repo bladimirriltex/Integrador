@@ -25,6 +25,7 @@ public class ClienteDAO implements CRUDcliente{
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
+    Cliente cl=new Cliente();
     Cliente c =null;
     
     
@@ -53,8 +54,7 @@ public class ClienteDAO implements CRUDcliente{
             
         }return list;
     }
-    
-    
+        
     @Override
     public Cliente list(int id) {
        
@@ -65,20 +65,20 @@ public class ClienteDAO implements CRUDcliente{
             rs=ps.executeQuery();
             while(rs.next()){
                 
-                c.setId(rs.getInt("id_cliente"));
-                c.setNombres(rs.getString("nombre_cliente"));
-                c.setApellidos(rs.getString("apellidos_cliente"));
-                c.setDni(rs.getString("dni_cliente"));
-                c.setCelular(rs.getString("celular_cliente"));
-                c.setId_distrito(rs.getInt("id_distrito"));
-                c.setDireccion(rs.getString("direccion_cliente"));
-                c.setCorreo(rs.getString("correo_cliente"));
-                c.setPassword(rs.getString("password_cliente"));
+                cl.setId(rs.getInt("id_cliente"));
+                cl.setNombres(rs.getString("nombre_cliente"));
+                cl.setApellidos(rs.getString("apellidos_cliente"));
+                cl.setDni(rs.getString("dni_cliente"));
+                cl.setCelular(rs.getString("celular_cliente"));
+                cl.setId_distrito(rs.getInt("id_distrito"));
+                cl.setDireccion(rs.getString("direccion_cliente"));
+                cl.setCorreo(rs.getString("correo_cliente"));
+                cl.setPassword(rs.getString("password_cliente"));
                 
             }
         }catch (Exception e){
             
-        }return c;
+        }return cl;
     }
     
     @Override
