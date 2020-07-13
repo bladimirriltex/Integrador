@@ -117,12 +117,10 @@ public class PlatoDAO implements CRUDplato{
         List<Plato> listplato=new ArrayList<Plato>();
         
         PlatoDAO dAO=new PlatoDAO();
-
-        listplato=dAO.listar();
-        
-        for (Plato plato : listplato) {
-            System.out.println(plato.getNombre_plato());
-        }
+        Plato plato=new Plato();
+        plato=dAO.list(2);
+        System.out.println(plato.getNombre_plato());
+       
     }
     
 }

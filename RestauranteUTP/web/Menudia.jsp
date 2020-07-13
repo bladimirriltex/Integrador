@@ -29,9 +29,7 @@
 
         listplato=dAO.listar();
         
-        for (Plato plato : listplato) {
-            System.out.println(plato.getNombre_plato());
-        }
+       
             
         %>
         
@@ -54,22 +52,28 @@
                                     if (plato.getId_tipo()==1) {%>
                                     
                             <div class="col-md-4 mb-3 mr-auto">
+                                <form action="ControladorCarrito" method="post">
                                 <div class="card" style="width: 18rem;">
                                     <img class="card-img-top" src="<%= plato.getImagen()%>" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title"><%= plato.getNombre_plato()%></h5>
+                    
                                         <p class="card-text">Descripcion del plato.</p>
                                     </div>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">Precio del palto: S/. <%= plato.getPrecio_plato()%> </li>
                                         <li class="list-group-item">Stock: <%= plato.getStock()%></li>
-                                        
+                                        <input type="hidden" name="idplato" value="<%= plato.getId_plato()%>">
+                                        <li class="list-group-item"><input type="text" name="cantidad" value="1"></li>
                                     </ul>
-                                    <div class="card-body">
-                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
                                         
-                                    </div>
+                                            <div class="card-body">
+                                                <button type="submit" class="btn btn-outline-danger">Seleccionar</button>
+
+                                            </div>
+                                        
                                 </div>
+                                </form>
                             </div>
                                                
                         <%                }

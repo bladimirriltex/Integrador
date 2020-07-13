@@ -4,6 +4,7 @@
     Author     : Edú
 --%>
 
+<%@page import="DTO.Persona"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,13 @@
     </head>
     <body>
         <h1>Bienvenido Administrador</h1>
-        
+        <% 
+            HttpSession sesion=(HttpSession)request.getAttribute("sesion");
+            if(sesion==null){
+                request.getRequestDispatcher("IniciarSesion.jsp").forward(request, response);
+            }
+        %>
+        <h3></h3>
         <div class="container text-center" >
             <h2>¿Que deseas hacer?</h2>
         <a class="btn btn-success btn-lg" href="Controlador?accion=listarclientes">Listar Clientes</a>

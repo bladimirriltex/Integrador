@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -139,6 +140,8 @@ public class ControladorSesion extends HttpServlet {
 "	</div>");
             request.getRequestDispatcher("IniciarSesion.jsp").forward(request, response);
         }else if (per!= null){
+            HttpSession sesion=request.getSession(true);
+            request.setAttribute("sesion",sesion);
             request.setAttribute("usuario",per);
             request.getRequestDispatcher(contextrue).forward(request, response);
         }

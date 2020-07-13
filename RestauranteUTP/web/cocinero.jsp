@@ -4,6 +4,7 @@
     Author     : Edú
 --%>
 
+<%@page import="DTO.Persona"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>cocinero</h1>
+        <% 
+            
+            Persona user;
+            HttpSession sesion=(HttpSession)request.getAttribute("sesion");
+            if(sesion==null){
+                request.getRequestDispatcher("IniciarSesion.jsp").forward(request, response);
+            }
+            user=(Persona)request.getAttribute("usuario");
+            
+        %>
+        <h1>cocinero: <%= user.getNombres()  %></h1>
+        <h1>bienvenido</h1>
     </body>
 </html>
