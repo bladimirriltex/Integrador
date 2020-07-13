@@ -6,10 +6,14 @@
 package CONTROLADOR;
 
 import DAO.CartaDAO;
+import DAO.PlatoDAO;
 import DTO.Carta;
+import DTO.Plato;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +28,33 @@ public class ControladorCarta extends HttpServlet {
     String listarcartas="adminCarta/verCartas.jsp";
     String addcartas="adminCarta/addCartas.jsp";
     String editcartas="adminCarta/editCartas.jsp";
+    
     Carta ca=new Carta();
     CartaDAO cadao=new CartaDAO();
+    
+    Plato pl=new Plato();
+    PlatoDAO pldao=new PlatoDAO();
+    
+    
+            PlatoDAO entrada1dao = new PlatoDAO();
+            PlatoDAO entrada2dao = new PlatoDAO();
+            PlatoDAO entrada3dao = new PlatoDAO();
+            PlatoDAO segundo1dao = new PlatoDAO();
+            PlatoDAO segundo2dao = new PlatoDAO();
+            PlatoDAO segundo3dao = new PlatoDAO();
+            PlatoDAO extra1dao = new PlatoDAO();
+            PlatoDAO extra2dao = new PlatoDAO();
+            PlatoDAO extra3dao = new PlatoDAO();
+            
+            Plato entrada1=new Plato();
+            Plato entrada2=new Plato();
+            Plato entrada3=new Plato();
+            Plato segundo1=new Plato();
+            Plato segundo2=new Plato();
+            Plato segundo3=new Plato();
+            Plato extra1=new Plato();
+            Plato extra2=new Plato();
+            Plato extra3=new Plato();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -71,7 +100,7 @@ public class ControladorCarta extends HttpServlet {
         if(action.equalsIgnoreCase("listarcartas")){
             acceso=listarcartas;
         }else if(action.equalsIgnoreCase("addcartas")){
-            acceso = addcartas;
+                acceso = addcartas;
         }else if(action.equalsIgnoreCase("Agregar Carta")){
             
             
@@ -147,6 +176,67 @@ public class ControladorCarta extends HttpServlet {
             acceso=listarcartas;
             
             
+        }else if(action.equalsIgnoreCase("establecercartas")){
+            
+            
+            int id_carta=Integer.parseInt(request.getParameter("id"));
+            
+            CartaDAO cadao=new CartaDAO();
+            Carta carta=new Carta();
+            carta=cadao.list(id_carta);
+            
+            
+            
+            entrada1=entrada1dao.list(carta.getEntrada1());
+            entrada1dao.enCarta(entrada1.getId_plato());
+            entrada2=entrada2dao.list(carta.getEntrada2());
+            entrada2dao.enCarta(entrada2.getId_plato());
+            entrada3=entrada3dao.list(carta.getEntrada3());
+            entrada3dao.enCarta(entrada3.getId_plato());
+            segundo1=segundo1dao.list(carta.getSegundo1());
+            segundo1dao.enCarta(segundo1.getId_plato());
+            segundo2=segundo2dao.list(carta.getSegundo2());
+            segundo2dao.enCarta(segundo2.getId_plato());
+            segundo3=segundo3dao.list(carta.getSegundo3());
+            segundo3dao.enCarta(segundo3.getId_plato());
+            extra1=extra1dao.list(carta.getExtra1());
+            extra1dao.enCarta(extra1.getId_plato());
+            extra2=extra2dao.list(carta.getExtra2());
+            extra2dao.enCarta(extra2.getId_plato());
+            extra3=extra3dao.list(carta.getExtra3());
+            extra3dao.enCarta(extra3.getId_plato());
+            
+            acceso=listarcartas;
+            
+        }else if(action.equalsIgnoreCase("quitarcartas")){
+            
+                int id_carta=Integer.parseInt(request.getParameter("id"));
+            
+            CartaDAO cadao=new CartaDAO();
+            Carta carta=new Carta();
+            carta=cadao.list(id_carta);
+            
+            
+            entrada1=entrada1dao.list(carta.getEntrada1());
+            entrada1dao.sinCarta(entrada1.getId_plato());
+            entrada2=entrada2dao.list(carta.getEntrada2());
+            entrada2dao.sinCarta(entrada2.getId_plato());
+            entrada3=entrada3dao.list(carta.getEntrada3());
+            entrada3dao.sinCarta(entrada3.getId_plato());
+            segundo1=segundo1dao.list(carta.getSegundo1());
+            segundo1dao.sinCarta(segundo1.getId_plato());
+            segundo2=segundo2dao.list(carta.getSegundo2());
+            segundo2dao.sinCarta(segundo2.getId_plato());
+            segundo3=segundo3dao.list(carta.getSegundo3());
+            segundo3dao.sinCarta(segundo3.getId_plato());
+            extra1=extra1dao.list(carta.getExtra1());
+            extra1dao.sinCarta(extra1.getId_plato());
+            extra2=extra2dao.list(carta.getExtra2());
+            extra2dao.sinCarta(extra2.getId_plato());
+            extra3=extra3dao.list(carta.getExtra3());
+            extra3dao.sinCarta(extra3.getId_plato());
+            acceso=listarcartas;
+            
         }
         
         RequestDispatcher vista=request.getRequestDispatcher(acceso);
@@ -176,5 +266,24 @@ public class ControladorCarta extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    public static void main(String[] args) {
+        List<Carta> listcarta=new ArrayList<Carta>();
+        
+        CartaDAO dAO=new CartaDAO();
+        Carta carta=new Carta();
+        carta=dAO.list(1);
+        
+        System.out.println(carta.getSegundo1());
+        
+        
+        PlatoDAO dao=new PlatoDAO();
+        Plato pl=new Plato();
+        pl=dao.list(carta.getSegundo3());
+        
+        System.out.println(pl.getNombre_plato());
+        dao.enCarta(pl.getId_plato());
+        
+    }
 
 }
+

@@ -28,7 +28,7 @@
                     
                     <div class="container">
                         <h1>Todas las Cartas</h1>
-                        <a class="btn btn-success btn-sm" href="ControladorPlato?accion=addplatos">Agregar Nuevo</a>
+                        <a class="btn btn-success btn-sm" href="ControladorCarta?accion=addcartas">Agregar Nuevo</a>
                         <table class="table table-bordered">
                             <tr>
                                 <th class="text-center">Id Plato</th>
@@ -61,6 +61,7 @@
                                 <tr>
                                 
                                 <td class="text-center"><%= ca.getId_carta() %></td>
+                                <td class="text-center"><%= ca.getFecha_carta() %></td>
                                 <td class="text-center"><%= ca.getEntrada1() %></td>
                                 <td class="text-center"><%= ca.getEntrada2() %></td>
                                 <td class="text-center"><%= ca.getEntrada3() %></td>
@@ -78,6 +79,8 @@
                                 <td>
                                     <a class="btn btn-warning btn-sm" href="ControladorCarta?accion=editarcartas&id=<%= ca.getId_carta() %>">Editar</a>
                                     <a class="btn btn-danger btn-sm" href="ControladorCarta?accion=eliminarcartas&id=<%= ca.getId_carta() %>">Eliminar</a>
+                                    <a class="btn btn-danger btn-sm" href="ControladorCarta?accion=establecercartas&id=<%= ca.getId_carta() %>">Establecer</a>
+                                    <a class="btn btn-danger btn-sm" href="ControladorCarta?accion=quitarcartas&id=<%= ca.getId_carta() %>">Quitar</a>
                                 </td>
                                 </tr>
                                 <%

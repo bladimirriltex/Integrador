@@ -31,7 +31,7 @@ public class CartaDAO implements CRUDcarta{
     @Override
     public List listar() {
         ArrayList<Carta> list = new ArrayList<>();
-        String sql="select * from plato";
+        String sql="select * from carta";
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -92,7 +92,7 @@ public class CartaDAO implements CRUDcarta{
 
     @Override
     public boolean add(Carta ca) {
-        String sql="insert into carta (fecha_carta, entrada1, entrada2, entrada3, segundo1, segundo2, segundo3, extra1, extra2, extra) values('"+ca.getFecha_carta()+"', '"+ca.getEntrada1()+"', '"+ca.getEntrada2()+"', '"+ca.getEntrada3()+"', '"+ca.getSegundo1()+"', '"+ca.getSegundo2()+"', '"+ca.getSegundo3()+"', '"+ca.getExtra1()+"', '"+ca.getExtra2()+"', '"+ca.getExtra3()+"')";
+        String sql="insert into carta (fecha_carta, entrada1, entrada2, entrada3, segundo1, segundo2, segundo3, extra1, extra2, extra3) values('"+ca.getFecha_carta()+"', '"+ca.getEntrada1()+"', '"+ca.getEntrada2()+"', '"+ca.getEntrada3()+"', '"+ca.getSegundo1()+"', '"+ca.getSegundo2()+"', '"+ca.getSegundo3()+"', '"+ca.getExtra1()+"', '"+ca.getExtra2()+"', '"+ca.getExtra3()+"')";
         try{
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -135,10 +135,9 @@ public class CartaDAO implements CRUDcarta{
         
         System.out.println(carta.getSegundo1());
         
-        PlatoDAO dao=new PlatoDAO();
-        Plato plato=new Plato();
-        plato=dao.list(carta.getSegundo1());
-        System.out.println(plato.getNombre_plato());
+        
+        
+        
         
         
         

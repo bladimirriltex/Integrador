@@ -16,7 +16,7 @@
         <div class="container">
             <div class="col-lg-8">
             <h1>Agregar Carta</h1>
-            <form action="ControladorPlato">
+            <form action="ControladorCarta">
                 Fecha:<br>
                 <input class="form-control" type="text" name="fecha_carta"><br>
                 Entrada 1:<br>

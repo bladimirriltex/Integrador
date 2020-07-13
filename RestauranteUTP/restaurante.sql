@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-07-2020 a las 10:57:05
+-- Tiempo de generación: 13-07-2020 a las 21:20:18
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.7
 
@@ -40,6 +40,13 @@ CREATE TABLE `carta` (
   `extra2` int(11) NOT NULL,
   `extra3` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `carta`
+--
+
+INSERT INTO `carta` (`id_carta`, `fecha_carta`, `entrada1`, `entrada2`, `entrada3`, `segundo1`, `segundo2`, `segundo3`, `extra1`, `extra2`, `extra3`) VALUES
+(1, '2020-07-13', 10, 2, 6, 10, 2, 5, 10, 7, 7);
 
 -- --------------------------------------------------------
 
@@ -214,22 +221,24 @@ CREATE TABLE `plato` (
   `precio_plato` float NOT NULL,
   `imagen` varchar(2000) NOT NULL,
   `stock` int(100) NOT NULL,
-  `id_tipo` int(50) NOT NULL
+  `id_tipo` int(50) NOT NULL,
+  `carta` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `plato`
 --
 
-INSERT INTO `plato` (`id_plato`, `nombre_plato`, `precio_plato`, `imagen`, `stock`, `id_tipo`) VALUES
-(1, 'Ceviche', 15, 'https://t1.rg.ltmcdn.com/es/images/7/4/1/ceviche_peruano_18147_600_square.jpg', 15, 3),
-(2, 'Caldo blanco', 10, 'https://i.ytimg.com/vi/qYyG2RNxhS4/hqdefault.jpg', 30, 1),
-(5, 'Ensalada de palta', 2, 'https://locosxlaparrilla.com/wp-content/uploads/2015/02/Receta-recetas-locos-x-la-parrilla-locosxlaparrilla-ensalada-paltas-ensalada-ensalada-paltas-semillas-lechuga-ensaladas-palta-2.jpg', 15, 1),
-(6, 'Caldo de lomo', 2, 'https://abrecht-group.com/wp-content/uploads/2017/04/4242881-1024x576.jpeg', 30, 1),
-(7, 'lomo saltado', 5, 'https://www.comeperuano.pe/wp-content/uploads/2019/05/Receta-de-Lomo-Saltado-peruano.jpg', 15, 2),
-(8, 'Milanesa de pollo', 5, 'https://www.mexicoenmicocina.com/wp-content/uploads/2019/01/receta-de-milanesa-de-pollo.jpg', 30, 2),
-(9, 'Seco de cordero', 5, 'https://i.ytimg.com/vi/rMsbGQ2xw-M/hqdefault.jpg?sqp=-oaymwEXCPYBEIoBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBHrjSati3jws_3yItjgTyw9l7ROg', 15, 2),
-(10, 'Aji de gallina', 5, 'https://t2.rg.ltmcdn.com/es/images/3/8/7/img_aji_de_pollo_16783_600.jpg', 30, 2);
+INSERT INTO `plato` (`id_plato`, `nombre_plato`, `precio_plato`, `imagen`, `stock`, `id_tipo`, `carta`) VALUES
+(1, 'Ceviche', 15, 'https://t1.rg.ltmcdn.com/es/images/7/4/1/ceviche_peruano_18147_600_square.jpg', 15, 3, 1),
+(2, 'Caldo blanco', 10, 'https://i.ytimg.com/vi/qYyG2RNxhS4/hqdefault.jpg', 30, 1, 1),
+(5, 'Ensalada de palta', 2, 'https://locosxlaparrilla.com/wp-content/uploads/2015/02/Receta-recetas-locos-x-la-parrilla-locosxlaparrilla-ensalada-paltas-ensalada-ensalada-paltas-semillas-lechuga-ensaladas-palta-2.jpg', 15, 1, 1),
+(6, 'Caldo de lomo', 2, 'https://abrecht-group.com/wp-content/uploads/2017/04/4242881-1024x576.jpeg', 30, 1, 1),
+(7, 'lomo saltado', 5, 'https://www.comeperuano.pe/wp-content/uploads/2019/05/Receta-de-Lomo-Saltado-peruano.jpg', 15, 2, 1),
+(8, 'Milanesa de pollo', 5, 'https://www.mexicoenmicocina.com/wp-content/uploads/2019/01/receta-de-milanesa-de-pollo.jpg', 30, 2, 1),
+(9, 'Seco de cordero', 5, 'https://i.ytimg.com/vi/rMsbGQ2xw-M/hqdefault.jpg?sqp=-oaymwEXCPYBEIoBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBHrjSati3jws_3yItjgTyw9l7ROg', 15, 2, 1),
+(10, 'Aji de gallina', 5, 'https://t2.rg.ltmcdn.com/es/images/3/8/7/img_aji_de_pollo_16783_600.jpg', 30, 2, 1),
+(11, 'pizza', 10, 'https://www.laespanolaaceites.com/wp-content/uploads/2019/06/pizza-con-chorizo-jamon-y-queso.jpg', 10, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -389,7 +398,7 @@ ALTER TABLE `vehiculo`
 -- AUTO_INCREMENT de la tabla `carta`
 --
 ALTER TABLE `carta`
-  MODIFY `id_carta` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_carta` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
@@ -425,7 +434,7 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de la tabla `plato`
 --
 ALTER TABLE `plato`
-  MODIFY `id_plato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_plato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`

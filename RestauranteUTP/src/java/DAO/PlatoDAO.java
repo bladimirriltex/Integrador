@@ -27,6 +27,8 @@ public class PlatoDAO implements CRUDplato{
     PreparedStatement ps;
     ResultSet rs;
     Plato pl = new Plato();
+    int confirmacion= 1;
+    int desconfirmacion= 0;
     
 
     @Override
@@ -114,8 +116,18 @@ public class PlatoDAO implements CRUDplato{
         }return false;
     }
     
-    public boolean enCarta(Plato pl) {
-            String sql="UPDATE plato SET carta = '"+pl.isCarta()+"' where id_plato= "+pl.getId_plato();
+    public boolean enCarta(int id_plato) {
+            String sql="UPDATE plato SET carta = '"+confirmacion+"' where id_plato= "+id_plato;
+        try{
+            con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){
+            
+        }return false;
+    }
+    public boolean sinCarta(int id_plato) {
+            String sql="UPDATE plato SET carta = '"+desconfirmacion+"' where id_plato= "+id_plato;
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -137,6 +149,9 @@ public class PlatoDAO implements CRUDplato{
         plato=dAO.list(2);
         System.out.println(plato.getNombre_plato());
         System.out.println(plato.isCarta());
+        
+        dAO.sinCarta(1);
+        
     }
     
 }
