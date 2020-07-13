@@ -21,6 +21,7 @@
         <a class="btn btn-success btn-lg" href="ControladorPlato?accion=listarplatos">Listar Platos</a>
         <a class="btn btn-success btn-lg" href="ControladorVehiculo?accion=listarvehiculos">Listar Vehiculos</a>
         <a class="btn btn-success btn-lg" href="ControladorEmpleado?accion=listarempleados">Listar Empleados</a>
+        <a class="btn btn-success btn-lg" href="ControladorCarta?accion=listarcartas">Listar Cartas</a>
     </div>
     </body>
 </html>

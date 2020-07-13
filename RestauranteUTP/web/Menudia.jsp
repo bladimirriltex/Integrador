@@ -49,7 +49,7 @@
                         <div class="form-row">
                             <% 
                             for (Plato plato : listplato) {
-                                    if (plato.getId_tipo()==1) {%>
+                                    if (plato.getId_tipo()==1 && plato.isCarta()==true) {%>
                                     
                             <div class="col-md-4 mb-3 mr-auto">
                                 <form action="ControladorCarrito" method="post">
@@ -90,7 +90,7 @@
                         <div class="form-row">
                             <% 
                             for (Plato plato : listplato) {
-                                    if (plato.getId_tipo()==2) {%>
+                                    if (plato.getId_tipo()==2 && plato.isCarta()==true) {%>
                                     
                             <div class="col-md-4 mb-3 mr-auto">
                                 <div class="card" style="width: 18rem;">
@@ -124,7 +124,7 @@
                         <div class="form-row">
                             <% 
                             for (Plato plato : listplato) {
-                                    if (plato.getId_tipo()==3) {%>
+                                    if (plato.getId_tipo()==3 && plato.isCarta()==true) {%>
                                     
                             <div class="col-md-4 mb-3 mr-auto">
                                 <div class="card" style="width: 18rem;">

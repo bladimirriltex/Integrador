@@ -45,6 +45,7 @@ public class PlatoDAO implements CRUDplato{
                 pl.setImagen(rs.getString("imagen"));
                 pl.setStock(rs.getInt("stock"));
                 pl.setId_tipo(rs.getInt("id_tipo"));
+                pl.setCarta(rs.getBoolean("carta"));
                 
                 list.add(pl);
             }
@@ -68,6 +69,7 @@ public class PlatoDAO implements CRUDplato{
                 pl.setImagen(rs.getString("imagen"));
                 pl.setStock(rs.getInt("stock"));
                 pl.setId_tipo(rs.getInt("id_tipo"));
+                pl.setCarta(rs.getBoolean("carta"));
                 
             }
         }catch (Exception e){
@@ -111,6 +113,17 @@ public class PlatoDAO implements CRUDplato{
             
         }return false;
     }
+    
+    public boolean enCarta(Plato pl) {
+            String sql="UPDATE plato SET carta = '"+pl.isCarta()+"' where id_plato= "+pl.getId_plato();
+        try{
+            con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){
+            
+        }return false;
+    }
 
     
     public static void main(String[] args) {
@@ -118,9 +131,12 @@ public class PlatoDAO implements CRUDplato{
         
         PlatoDAO dAO=new PlatoDAO();
         Plato plato=new Plato();
+        plato=dAO.list(1);
+        System.out.println(plato.getNombre_plato());
+        System.out.println(plato.isCarta());
         plato=dAO.list(2);
         System.out.println(plato.getNombre_plato());
-       
+        System.out.println(plato.isCarta());
     }
     
 }

@@ -16,21 +16,31 @@ public class Plato {
     private float precio_plato;
     private String imagen;
     private int stock;
+    private boolean carta;
     private int id_tipo;
 
     public Plato() {
     }
 
-    public Plato(int id_plato, String nombre_plato, float precio_plato, String imagen, int stock, int id_tipo) {
+    public Plato(int id_plato, String nombre_plato, float precio_plato, String imagen, int stock, boolean carta, int id_tipo) {
         this.id_plato = id_plato;
         this.nombre_plato = nombre_plato;
         this.precio_plato = precio_plato;
         this.imagen = imagen;
         this.stock = stock;
+        this.carta = carta;
         this.id_tipo = id_tipo;
     }
-    
 
+    public boolean isCarta() {
+        return carta;
+    }
+
+    public void setCarta(boolean carta) {
+        this.carta = carta;
+    }
+
+    
     public int getId_plato() {
         return id_plato;
     }
