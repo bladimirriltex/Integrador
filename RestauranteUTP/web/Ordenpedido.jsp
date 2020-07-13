@@ -24,7 +24,7 @@
   <body >
     <% 
         HttpSession sessioncarrito=request.getSession(true);
-        ArrayList<Articulo> articulos= sessioncarrito.getAttribute("carrito")==null? null : (ArrayList)sessioncarrito.getAttribute("carrito");
+        ArrayList<Articulo> articulos= sessioncarrito.getAttribute("carrito")==null ? null : (ArrayList)sessioncarrito.getAttribute("carrito");
         
     %>
 
@@ -49,7 +49,7 @@
                                     <td></td>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tbody">
 
 
 
@@ -86,7 +86,7 @@
                                     </td>
                                     <td class="cart_delete">
                                         <span id="idarticulo" style="display: none"><%= plato.getId_plato()%></span>
-                                        <a class="btn btn-outline-danger cart_quantity_delete" id="deleteitem"><i class="fa fa-times"></i>eliminar</a>
+                                        <a class="btn btn-outline-danger cart_quantity_delete" id="deleteitem">Eliminar</a>
                                         
                                     </td>
                                 </tr>
@@ -97,9 +97,10 @@
 
 
                             </tbody>
+                       
                         </table>
-                  <% if (articulos == null) {%>
-                        <h4>No hay articulos en tu carrito</h4>
+                        <% if (articulos.size()==0) {%>
+                        <h4>No hay plato en su pedido</h4>
                         <%}%>
 
               <hr style="border: 2px solid #000">
@@ -107,7 +108,7 @@
                 <thead>
                   <tr>
                     <th scope="col" colspan="2" class="text-center">Total</th>
-                    <th >S/. <%= total %></th>
+                    <th >S/. <span class="total-text"><%= total %></span></th>
                     <th >    </th>
                     
                   </tr>
@@ -117,6 +118,7 @@
 
               <center>
                 <a href="" class="mb-5 btn btn-outline-success">Registrar pedido y pagar</a>
+                <a href="Menudia.jsp" class="mb-5 ml-3 btn btn-outline-primary">Añadir mas platos</a>
               </center>
             </div>
 
@@ -134,7 +136,6 @@
     <script src="js/carrito.js" type="text/javascript"></script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
    
   </body>
 </html>

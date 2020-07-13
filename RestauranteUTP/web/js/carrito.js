@@ -12,12 +12,13 @@ $(function (){
             url: "borraritem",
             type: 'POST',
             data: {idplato: idplato},
-            success: function (r) {
+            success: function (data) {
                 elemento.parent().parent().remove(); 
                 var elementostabla=$('#card-table tr');
                 if (elementostabla.length<=1){
-                    $('#card-table').append("<h4>No hay articulos en tu carrito</h4>");
+                    $('#card-table').append("<h4>No hay plato en su pedido</h4>");
                 }
+                $('.total-text').text(data);
             }
         });
     });

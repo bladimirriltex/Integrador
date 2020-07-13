@@ -1,11 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package CONTROLADOR;
 
+import DAO.PlatoDAO;
 import DTO.Articulo;
+import DTO.Plato;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -22,7 +24,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "ControladorDeleteItem", urlPatterns = {"/borraritem"})
 public class ControladorDeleteItem extends HttpServlet {
-
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,7 +41,7 @@ public class ControladorDeleteItem extends HttpServlet {
         int idplato=Integer.parseInt(request.getParameter("idplato"));
         
         HttpSession sessioncarrito=request.getSession(true);
-        ArrayList<Articulo> articulos= sessioncarrito.getAttribute("carrito")==null? null : (ArrayList)sessioncarrito.getAttribute("carrito");
+        ArrayList<Articulo> articulos= sessioncarrito.getAttribute("carrito")==null ?  null : (ArrayList)sessioncarrito.getAttribute("carrito");
         
         if (articulos!=null) {
             for (Articulo articulo : articulos) {
@@ -51,19 +53,29 @@ public class ControladorDeleteItem extends HttpServlet {
         }
         
         
+        double total=0;
+        PlatoDAO plt=new PlatoDAO();
+        
+        for (Articulo a : articulos) {
+            
+            Plato plato=plt.list(idplato);
+            total=total+a.getCantidad()*plato.getPrecio_plato();
+        }
+        
+        response.getWriter().print(Math.round(total*100.0)/100.0);
         
         
         
         
-          
         
         
         
         
         
-       
+        
+        
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -78,7 +90,7 @@ public class ControladorDeleteItem extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -92,7 +104,7 @@ public class ControladorDeleteItem extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     /**
      * Returns a short description of the servlet.
      *
@@ -102,5 +114,5 @@ public class ControladorDeleteItem extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
 }
