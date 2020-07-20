@@ -36,6 +36,15 @@ public class ControladorCarta extends HttpServlet {
     PlatoDAO pldao=new PlatoDAO();
     
     
+    
+    
+        
+    PlatoDAO dAO=new PlatoDAO();
+
+    List<Plato> listplato=dAO.listar();
+    
+    
+    
             PlatoDAO entrada1dao = new PlatoDAO();
             PlatoDAO entrada2dao = new PlatoDAO();
             PlatoDAO entrada3dao = new PlatoDAO();
@@ -210,7 +219,7 @@ public class ControladorCarta extends HttpServlet {
             
         }else if(action.equalsIgnoreCase("quitarcartas")){
             
-                int id_carta=Integer.parseInt(request.getParameter("id"));
+            int id_carta=Integer.parseInt(request.getParameter("id"));
             
             CartaDAO cadao=new CartaDAO();
             Carta carta=new Carta();
@@ -236,6 +245,18 @@ public class ControladorCarta extends HttpServlet {
             extra3=extra3dao.list(carta.getExtra3());
             extra3dao.sinCarta(extra3.getId_plato());
             acceso=listarcartas;
+            
+        }else if(action.equalsIgnoreCase("Actualizar Nueva Carta")){
+            List<Plato> menu=null;
+            int id_plato=Integer.parseInt(request.getParameter("id_plato"));
+            PlatoDAO dao = null;
+            
+            Plato plato=dao.list(id_plato);
+            
+            menu.add(plato);
+            
+            
+            
             
         }
         
@@ -267,22 +288,12 @@ public class ControladorCarta extends HttpServlet {
         return "Short description";
     }// </editor-fold>
     public static void main(String[] args) {
-        List<Carta> listcarta=new ArrayList<Carta>();
-        
-        CartaDAO dAO=new CartaDAO();
-        Carta carta=new Carta();
-        carta=dAO.list(1);
-        
-        System.out.println(carta.getSegundo1());
-        
-        
+        List<Plato> list=new ArrayList<Plato>();
         PlatoDAO dao=new PlatoDAO();
-        Plato pl=new Plato();
-        pl=dao.list(carta.getSegundo3());
-        
-        System.out.println(pl.getNombre_plato());
-        dao.enCarta(pl.getId_plato());
-        
+        list=dao.listar();
+        for(Plato plato:list){
+                int id_plato=Integer.parseInt(request.getParameter("id"));
+        }
     }
 
 }
