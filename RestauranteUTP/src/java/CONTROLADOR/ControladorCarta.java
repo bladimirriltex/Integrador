@@ -292,7 +292,7 @@ public class ControladorCarta extends HttpServlet {
         PlatoDAO dao=new PlatoDAO();
         list=dao.listar();
         for(Plato plato:list){
-                int id_plato=Integer.parseInt(request.getParameter("id"));
+                
         }
     }
 

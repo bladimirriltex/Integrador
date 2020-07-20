@@ -17,6 +17,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <%@include file="header_admin.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <title>La Carta</title>
