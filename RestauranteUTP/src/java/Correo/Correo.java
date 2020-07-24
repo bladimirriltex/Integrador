@@ -42,8 +42,8 @@ public class Correo {
         String password="edubladimir";
         
         String correoReceptor=correoreceptor;
-        String asunto="Correo prueba";
-        String mensaje="correo en java recibido";
+        String asunto="Comprobante de compra";
+        String mensaje="Se le envia su boleta de comsumo del restaurante utp";
         
         BodyPart adjunto=new MimeBodyPart();
         adjunto.setDataHandler(new DataHandler(new FileDataSource("D:/reporte.pdf")));
