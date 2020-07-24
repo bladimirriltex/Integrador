@@ -27,7 +27,7 @@
         
         %>
         
-        <form action="ControladorCarta">
+        <form action="ControladorCarta" method="post">
             <div>
                 <h2>Entradas</h2>
                 <% 
