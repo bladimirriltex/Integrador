@@ -17,9 +17,9 @@
 
     <title>Hello, world!</title>
   </head>
-  <body >
+  <body>
     
-
+ 
     <!-- Cuenta -->
 
     <div class="container mt-5">
@@ -63,38 +63,29 @@
                   <br>
                   <div class="container">
                     <label for="nombretitular">Nombre del titular:</label>
-                    <input type="text" class="form-control col-md-6 is-valid" id="nombretitular"  required>
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
+                    <input type="text" class="form-control col-md-6 " id="nombretitular"  required >
+                    
 
 
                     <label for="nrotarjeta">Numero de la tarjeta</label>
-                    <input type="num" class="form-control col-md-6 is-valid" id="nrotarjeta"  required>
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
+                    <input type="num" class="form-control col-md-6 " id="nrotarjeta"  required>
+                   
 
                     <label for="cvv">CVV:</label>
-                    <input type="text" class="form-control col-md-2 is-valid" id="cvv"  required>
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
+                    <input type="text" class="form-control col-md-2 " id="cvv"  required>
+                    
 
                     <label for="fechavec">Fecha de Vencimiento:</label>
-                    <input type="date" class="form-control col-md-4 is-valid" id="fechavec"  required>
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
+                    <input type="date" class="form-control col-md-4 " id="fechavec"  required>
+                    <input type="hidden" value="online">
 
                     <center>
-                      <a href="" class="mb-5 mr-5 btn btn-outline-success">Pagar</a>
+                      <a href="ControladorPedido?tipo=online" class="mb-5 mr-5 btn btn-outline-success">Pagar</a>
 
-                      <a href="" class="mb-5 btn btn-outline-success">Volver</a>
+                      <a href="javascript: history.go(-1)" class="mb-5 btn btn-outline-success">Volver</a>
                     </center>
                   </div>
                 </div>
-              </form>
             </div>
           </div>
         </div>
@@ -113,11 +104,12 @@
                <div class="custom-control custom-radio custom-control-inline">
                 <input type="radio" id="efectivo" name="customRadioInline1" class="custom-control-input">
                 <label class="custom-control-label" for="efectivo">Efectivo</label>
+                <input type="hidden" value="efectivo">
               </div>
               <center>
-                <a href="" class="mb-5 mr-5 btn btn-outline-success">Pagar</a>
+                <a href="ControladorPedido?tipo=efectivo" class="mb-5 mr-5 btn btn-outline-success">Pagar</a>
 
-                <a href="" class="mb-5 btn btn-outline-success">Volver</a>
+                <a href="javascript: history.go(-1)" class="mb-5 btn btn-outline-success">Volver</a>
               </center>
             </form>
           </div>

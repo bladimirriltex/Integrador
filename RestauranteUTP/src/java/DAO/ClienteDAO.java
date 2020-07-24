@@ -192,7 +192,33 @@ public class ClienteDAO implements CRUDcliente{
         return false;
     }
     
-    public static void main(String[] args) {
+    //Consulta de informacion de pedidos
+    public Cliente consultaDNI(int DNI) {
+       
+        String sql="SELECT * FROM `cliente` WHERE dni_cliente="+DNI;
+        try{
+            con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                
+                cl.setId(rs.getInt("id_cliente"));
+                cl.setNombres(rs.getString("nombre_cliente"));
+                cl.setApellidos(rs.getString("apellidos_cliente"));
+                cl.setDni(rs.getString("dni_cliente"));
+                cl.setCelular(rs.getString("celular_cliente"));
+                cl.setId_distrito(rs.getInt("id_distrito"));
+                cl.setDireccion(rs.getString("direccion_cliente"));
+                cl.setCorreo(rs.getString("correo_cliente"));
+                cl.setPassword(rs.getString("password_cliente"));
+                
+            }
+        }catch (Exception e){
+            
+        }return cl;
+    }
+    
+   /*public static void main(String[] args) {
         Persona persona=new Persona();
         persona.setNombres("karlo");
         persona.setApellidos("mollo");
@@ -204,8 +230,9 @@ public class ClienteDAO implements CRUDcliente{
         persona.setId_distrito(4);
         
         ClienteDAO clienteDAO=new ClienteDAO();
-        clienteDAO.Registrar(persona);
+        persona=clienteDAO.consultaDNI(72564865);
+        System.out.println(persona.getNombres());
         
-    }
+    }*/
     
 }

@@ -142,7 +142,8 @@ public class ControladorSesion extends HttpServlet {
         }else if (per!= null){
             HttpSession sesion=request.getSession(true);
             request.setAttribute("sesion",sesion);
-            request.setAttribute("usuario",per);
+            HttpSession user=request.getSession(true);
+            user.setAttribute("usuario",per);
             request.getRequestDispatcher(contextrue).forward(request, response);
         }
     }

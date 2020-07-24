@@ -7,6 +7,7 @@ package CONTROLADOR;
 
 
 import DTO.Articulo;
+import DTO.Persona;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -69,6 +70,9 @@ public class ControladorCarrito extends HttpServlet {
         int cantidad=Integer.parseInt(request.getParameter("cantidad"));
         int idproducto=Integer.parseInt(request.getParameter("idplato"));
         
+        HttpSession user=request.getSession(true);
+        Persona per=(Persona)user.getAttribute("usuario");
+        
         HttpSession sesioncarrito= request.getSession(true);
         ArrayList<Articulo> articulos=sesioncarrito.getAttribute("carrito")==null ? new ArrayList<>(): (ArrayList<Articulo>)sesioncarrito.getAttribute("carrito");
         boolean flag=false;
@@ -86,7 +90,7 @@ public class ControladorCarrito extends HttpServlet {
             articulos.add(new Articulo(idproducto, cantidad));
         }
         sesioncarrito.setAttribute("carrito",articulos);
-        
+        user.setAttribute("usuario",per);
         response.sendRedirect("Ordenpedido.jsp");
         
     }

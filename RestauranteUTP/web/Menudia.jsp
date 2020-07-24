@@ -4,6 +4,7 @@
     Author     : Edú
 --%>
 
+<%@page import="DTO.Persona"%>
 <%@page import="DAO.PlatoDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DTO.Plato"%>
@@ -28,14 +29,30 @@
         PlatoDAO dAO=new PlatoDAO();
 
         listplato=dAO.listar();
-        
-       
-            
+        HttpSession user=request.getSession(true);
+        Persona persona=(Persona)user.getAttribute("usuario");
+        String nombre="";
+        if(persona!=null){
+            nombre=persona.getNombres();    
         %>
         
+            <div class="usuario ml-2" id="usuario" >  Usuario: <%= nombre %></div>
+            <%
+        }
+        
+        %>
+       
+        <%  String alert=(String)request.getAttribute("sms");
+            String alerta="";
+            if(alert!=null)alerta=alert;
+                
+        %>
+        
+        
+        <p style="margin-top: 70px;"> <%= alerta %></p>
         <!-- Menu del dia o carta del dia -->
         <!-- img 286 x 214.49 -->
-        <div class="container text-center pt-5 mt-5">
+        <div class="container text-center pt-2 mt-2">
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active text-dark" id="nav-home-tab" data-toggle="tab" href="#nav-entradas" role="tab" aria-controls="nav-entradas" aria-selected="true">Entradas</a>
@@ -93,30 +110,36 @@
                                     if (plato.getId_tipo()==2 && plato.isCarta()==true) {%>
                                     
                             <div class="col-md-4 mb-3 mr-auto">
+                                <form action="ControladorCarrito" method="post">
                                 <div class="card" style="width: 18rem;">
                                     <img class="card-img-top" src="<%= plato.getImagen()%>" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title"><%= plato.getNombre_plato()%></h5>
+                    
                                         <p class="card-text">Descripcion del plato.</p>
                                     </div>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">Precio del palto: S/. <%= plato.getPrecio_plato()%> </li>
                                         <li class="list-group-item">Stock: <%= plato.getStock()%></li>
-                                        
+                                        <input type="hidden" name="idplato" value="<%= plato.getId_plato()%>">
+                                        <li class="list-group-item"><input type="text" name="cantidad" value="1"></li>
                                     </ul>
-                                    <div class="card-body">
-                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
                                         
-                                    </div>
+                                            <div class="card-body">
+                                                <button type="submit" class="btn btn-outline-danger">Seleccionar</button>
+
+                                            </div>
+                                        
                                 </div>
+                                </form>
                             </div>
                                                
                         <%                }
                                 }
                         
                         %>
-                            
-                        </div>
+                        
+                    </div>  
                     </div>
                 </div>
                 <div class="tab-pane fade" id="nav-extras" role="tabpanel" aria-labelledby="nav-extras-tab">
@@ -127,30 +150,36 @@
                                     if (plato.getId_tipo()==3 && plato.isCarta()==true) {%>
                                     
                             <div class="col-md-4 mb-3 mr-auto">
+                                <form action="ControladorCarrito" method="post">
                                 <div class="card" style="width: 18rem;">
                                     <img class="card-img-top" src="<%= plato.getImagen()%>" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title"><%= plato.getNombre_plato()%></h5>
+                    
                                         <p class="card-text">Descripcion del plato.</p>
                                     </div>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">Precio del palto: S/. <%= plato.getPrecio_plato()%> </li>
                                         <li class="list-group-item">Stock: <%= plato.getStock()%></li>
-                                        
+                                        <input type="hidden" name="idplato" value="<%= plato.getId_plato()%>">
+                                        <li class="list-group-item"><input type="text" name="cantidad" value="1"></li>
                                     </ul>
-                                    <div class="card-body">
-                                        <a href="#" class="btn btn-outline-danger">Seleccionar</a>
                                         
-                                    </div>
+                                            <div class="card-body">
+                                                <button type="submit" class="btn btn-outline-danger">Seleccionar</button>
+
+                                            </div>
+                                        
                                 </div>
+                                </form>
                             </div>
                                                
                         <%                }
                                 }
                         
                         %>
-                            
-                        </div>
+                        
+                    </div>  
                     </div>
                 </div>
             </div>

@@ -24,6 +24,7 @@
                     <a class="nav-item nav-link mx-2 text-white" href="index.html">Inicio</a>
                     <a class="nav-item nav-link mx-2 text-white" href="Menudia.jsp">Menu del dia</a>
                     <a class="nav-item nav-link mx-2 text-white" href="Ordenpedido.jsp">Mi pedido</a>
+                    <a class="nav-item nav-link mx-2 text-white" href="ConsultarPedido.jsp">Consultar Pedido</a>
                     <a class="btn btn-outline-light px-2" href="IniciarSesion.jsp" >Iniciar Sesión</a>
                     
                     <a class="  btn btn-outline-light mx-2" href="Registrase.jsp" >Registrarse</a>

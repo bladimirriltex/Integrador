@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Boleta" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="63caf880-33d5-45c8-8fe9-38c1858697d0">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="69"/>
+	<parameter name="id_cliente" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_pedido" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT cliente.`nombre_cliente` AS cliente_nombre_cliente, cliente.`apellidos_cliente` AS cliente_apellidos_cliente, cliente.`dni_cliente` AS cliente_dni_cliente, plato.`nombre_plato` AS plato_nombre_plato, plato.`precio_plato` AS plato_precio_plato, detalle_pedido.`cantidad_plato` AS detalle_pedido_cantidad_plato, encabezado_pedido.`id_pedido` AS encabezado_pedido_id_pedido, encabezado_pedido.`fecha_pedido` AS encabezado_pedido_fecha_pedido, encabezado_pedido.`total_pedido` AS encabezado_pedido_total_pedido FROM `plato` plato INNER JOIN `detalle_pedido` detalle_pedido ON plato.`id_plato` = detalle_pedido.`id_plato` INNER JOIN `encabezado_pedido` encabezado_pedido ON detalle_pedido.`id_pedido` = encabezado_pedido.`id_pedido` INNER JOIN `cliente` cliente ON encabezado_pedido.`id_cliente` = cliente.`id_cliente` where encabezado_pedido.id_pedido=$P!{id_pedido}]]>
+	</queryString>
+	<field name="cliente_nombre_cliente" class="java.lang.String"/>
+	<field name="cliente_apellidos_cliente" class="java.lang.String"/>
+	<field name="cliente_dni_cliente" class="java.lang.String"/>
+	<field name="plato_nombre_plato" class="java.lang.String"/>
+	<field name="plato_precio_plato" class="java.lang.Float"/>
+	<field name="detalle_pedido_cantidad_plato" class="java.lang.Integer"/>
+	<field name="encabezado_pedido_id_pedido" class="java.lang.Integer"/>
+	<field name="encabezado_pedido_fecha_pedido" class="java.sql.Timestamp"/>
+	<field name="encabezado_pedido_total_pedido" class="java.lang.Float"/>
+	<variable name="plato_precio_plato_1" class="java.lang.Float" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{plato_precio_plato}]]></variableExpression>
+	</variable>
+	<variable name="detalle_pedido_cantidad_plato_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{detalle_pedido_cantidad_plato}]]></variableExpression>
+	</variable>
+	<variable name="plato_precio_plato_2" class="java.lang.Float" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{plato_precio_plato}]]></variableExpression>
+	</variable>
+	<variable name="plato_precio_plato_3" class="java.lang.Float" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{plato_precio_plato}]]></variableExpression>
+	</variable>
+	<variable name="plato_precio_plato_4" class="java.lang.Float" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{plato_precio_plato}]]></variableExpression>
+	</variable>
+	<variable name="detalle_pedido_cantidad_plato_2" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{detalle_pedido_cantidad_plato}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="92" splitType="Stretch">
+			<staticText>
+				<reportElement x="211" y="6" width="185" height="32" uuid="1884c91a-1d64-4786-a067-49a1d2de93aa"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Boleta de pago]]></text>
+			</staticText>
+			<image>
+				<reportElement x="10" y="21" width="178" height="37" uuid="f3373dbb-f184-4fe9-9a60-45fc7d833493"/>
+				<imageExpression><![CDATA["C:\\Users\\EDU\\Pictures\\Saved Pictures\\utp.png"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="443" y="38" width="100" height="20" uuid="621cf083-e19c-4596-ae40-672b6611f370"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="38" width="51" height="20" uuid="2223114f-436a-498e-91a7-442f27cdffad"/>
+				<textFieldExpression><![CDATA[$F{encabezado_pedido_id_pedido}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="247" y="38" width="49" height="20" uuid="06cd9006-5a11-41c0-9f43-315c17a4470e"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Nro boleta:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="52" splitType="Stretch">
+			<textField>
+				<reportElement x="88" y="14" width="100" height="20" uuid="1c33157f-8df5-4bd0-844b-88175caa90b7"/>
+				<textFieldExpression><![CDATA[$F{cliente_nombre_cliente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="28" y="14" width="49" height="20" uuid="2a1a087a-046d-45b9-a9ea-ccb0da2682d1"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Cliente :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="196" y="14" width="100" height="20" uuid="5c99ef23-03ac-4f64-a55f-59c23d33d9e3"/>
+				<textFieldExpression><![CDATA[$F{cliente_apellidos_cliente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="335" y="14" width="49" height="20" uuid="fa443277-02ff-43f5-99cb-47ce5da15ae8"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[DNI :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="396" y="14" width="100" height="20" uuid="05f7b3bd-1595-4046-8a16-e60d7c06d823"/>
+				<textFieldExpression><![CDATA[$F{cliente_dni_cliente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="28" y="21" width="100" height="20" uuid="303ad9a5-6e80-455e-a646-4c761afe4584"/>
+				<text><![CDATA[Nombre del Plato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="296" y="21" width="100" height="20" uuid="3bcea9c9-fd83-4902-9ded-e0fc09d738c6"/>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="21" width="100" height="20" uuid="6d8e2c84-c76a-45d6-81c9-6d4802fe7bc2"/>
+				<text><![CDATA[Precio del Plato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="21" width="100" height="20" uuid="23c7b274-adc4-429a-adc2-d077868ba01d"/>
+				<text><![CDATA[SubTotal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="41" splitType="Stretch">
+			<textField>
+				<reportElement x="28" y="12" width="100" height="20" uuid="9e0f1cef-0a81-4a3b-a8b8-7c161e974fe4"/>
+				<textFieldExpression><![CDATA[$F{plato_nombre_plato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="12" width="100" height="20" uuid="7d8f3165-b2c1-4e43-9115-c39f8016c6e9"/>
+				<textFieldExpression><![CDATA[$F{detalle_pedido_cantidad_plato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="165" y="12" width="100" height="20" uuid="cc3d3a72-f352-4c6f-865a-0ee26e3a6d9b"/>
+				<textFieldExpression><![CDATA[$F{plato_precio_plato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="12" width="120" height="20" uuid="db3e97d7-4200-42de-a689-9fe3c8edf91d"/>
+				<textFieldExpression><![CDATA[$F{plato_precio_plato}*$F{detalle_pedido_cantidad_plato}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="48" splitType="Stretch">
+			<textField>
+				<reportElement x="423" y="16" width="100" height="20" uuid="2650b20f-fd43-407c-a03a-de080da02004"/>
+				<textFieldExpression><![CDATA[$F{encabezado_pedido_total_pedido}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="347" y="16" width="49" height="20" uuid="ceed46c2-ec7e-48b0-a93d-392196d40d8d"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Total :]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="57" splitType="Stretch">
+			<textField>
+				<reportElement x="423" y="18" width="80" height="20" uuid="330b516d-94a5-4aa8-9054-9c6b4f9dad28"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="503" y="18" width="40" height="20" uuid="f71c10d8-bdd8-475e-9b18-e325fba4763d"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

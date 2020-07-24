@@ -266,7 +266,7 @@ public class ControladorCarta extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         List<Carta> listcarta=new ArrayList<Carta>();
         
         CartaDAO dAO=new CartaDAO();
@@ -283,7 +283,7 @@ public class ControladorCarta extends HttpServlet {
         System.out.println(pl.getNombre_plato());
         dao.enCarta(pl.getId_plato());
         
-    }
+    }*/
 
 }
 

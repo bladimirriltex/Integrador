@@ -4,6 +4,7 @@
     Author     : Edú
 --%>
 
+<%@page import="DTO.Persona"%>
 <%@page import="DTO.Plato"%>
 <%@page import="DAO.PlatoDAO"%>
 <%@page import="DTO.Articulo"%>
@@ -26,7 +27,16 @@
         HttpSession sessioncarrito=request.getSession(true);
         ArrayList<Articulo> articulos= sessioncarrito.getAttribute("carrito")==null ? null : (ArrayList)sessioncarrito.getAttribute("carrito");
         
+        HttpSession user=request.getSession(true);
+        Persona persona=(Persona)user.getAttribute("usuario");
+        String nombre="";
+        if(persona!=null){
+            nombre=persona.getNombres();    
+        }
     %>
+    
+    <br>
+        <p style="margin-top: 100px;"><%= nombre %></p>
 
     <!-- Cuenta -->
 
@@ -99,7 +109,7 @@
                             </tbody>
                        
                         </table>
-                        <% if (articulos.size()==0) {%>
+                        <% if (articulos==null) {%>
                         <h4>No hay plato en su pedido</h4>
                         <%}%>
 
@@ -117,7 +127,7 @@
               </table>
 
               <center>
-                <a href="" class="mb-5 btn btn-outline-success">Registrar pedido y pagar</a>
+                <a href="Metodopago.jsp" class="mb-5 btn btn-outline-success">Registrar pedido y pagar</a>
                 <a href="Menudia.jsp" class="mb-5 ml-3 btn btn-outline-primary">Añadir mas platos</a>
               </center>
             </div>

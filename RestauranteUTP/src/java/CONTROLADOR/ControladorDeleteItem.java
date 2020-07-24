@@ -58,7 +58,7 @@ public class ControladorDeleteItem extends HttpServlet {
         
         for (Articulo a : articulos) {
             
-            Plato plato=plt.list(idplato);
+            Plato plato=plt.list(a.getId_plato());
             total=total+a.getCantidad()*plato.getPrecio_plato();
         }
         
