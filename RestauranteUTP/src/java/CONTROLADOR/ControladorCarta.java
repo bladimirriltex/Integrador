@@ -36,6 +36,15 @@ public class ControladorCarta extends HttpServlet {
     PlatoDAO pldao=new PlatoDAO();
     
     
+    
+    
+        
+    PlatoDAO dAO=new PlatoDAO();
+
+    List<Plato> listplato=dAO.listar();
+    
+    
+    
             PlatoDAO entrada1dao = new PlatoDAO();
             PlatoDAO entrada2dao = new PlatoDAO();
             PlatoDAO entrada3dao = new PlatoDAO();
@@ -210,7 +219,7 @@ public class ControladorCarta extends HttpServlet {
             
         }else if(action.equalsIgnoreCase("quitarcartas")){
             
-                int id_carta=Integer.parseInt(request.getParameter("id"));
+            int id_carta=Integer.parseInt(request.getParameter("id"));
             
             CartaDAO cadao=new CartaDAO();
             Carta carta=new Carta();
@@ -237,6 +246,18 @@ public class ControladorCarta extends HttpServlet {
             extra3dao.sinCarta(extra3.getId_plato());
             acceso=listarcartas;
             
+        }else if(action.equalsIgnoreCase("Actualizar Nueva Carta")){
+            List<Plato> menu=null;
+            int id_plato=Integer.parseInt(request.getParameter("id_plato"));
+            PlatoDAO dao = null;
+            
+            Plato plato=dao.list(id_plato);
+            
+            menu.add(plato);
+            
+            
+            
+            
         }
         
         RequestDispatcher vista=request.getRequestDispatcher(acceso);
@@ -255,6 +276,8 @@ public class ControladorCarta extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        
     }
 
     /**
@@ -266,6 +289,7 @@ public class ControladorCarta extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
    /* public static void main(String[] args) {
         List<Carta> listcarta=new ArrayList<Carta>();
         
@@ -276,7 +300,12 @@ public class ControladorCarta extends HttpServlet {
         System.out.println(carta.getSegundo1());
         
         
+=======
+    public static void main(String[] args) {
+        List<Plato> list=new ArrayList<Plato>();
+>>>>>>> origin/master
         PlatoDAO dao=new PlatoDAO();
+<<<<<<< HEAD
         Plato pl=new Plato();
         pl=dao.list(carta.getSegundo3());
         
@@ -284,6 +313,13 @@ public class ControladorCarta extends HttpServlet {
         dao.enCarta(pl.getId_plato());
         
     }*/
+
+        list=dao.listar();
+        for(Plato plato:list){
+                
+        }
+    }
+
 
 }
 
