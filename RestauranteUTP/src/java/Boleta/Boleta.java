@@ -9,14 +9,13 @@ import CONEXION.Conexion;
 import com.mysql.jdbc.Connection;
 import java.util.HashMap;
 import java.util.Map;
-import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
+
 
 /**
  *
@@ -25,10 +24,10 @@ import net.sf.jasperreports.view.JasperViewer;
 public class Boleta {
     
     
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         Boleta bol=new Boleta();
         bol.generarBoleta(6);
-    }
+    }*/
     
     public void generarBoleta(int idpedido){
         try {
