@@ -312,7 +312,7 @@ public class ControladorCarta extends HttpServlet {
         System.out.println(pl.getNombre_plato());
         dao.enCarta(pl.getId_plato());
         
-    }*/
+    }
 
         list=dao.listar();
         for(Plato plato:list){
@@ -320,6 +320,6 @@ public class ControladorCarta extends HttpServlet {
         }
     }
 
-
+*/
 }
 
