@@ -6,7 +6,9 @@
 package CONTROLADOR;
 
 
+import DAO.CartaDAO;
 import DAO.PlatoDAO;
+import DTO.Detallecarta;
 
 
 import DTO.Plato;
@@ -14,7 +16,10 @@ import DTO.encabezadoCarta;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,11 +33,16 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ControladorCarta extends HttpServlet {
     String menu="Menudia.jsp";
+    String vercarta="verDetalleCarta.jsp";
     
     Plato pl=new Plato();
     PlatoDAO pldao=new PlatoDAO();
     
     encabezadoCarta ca=new encabezadoCarta();
+    CartaDAO cadao=new CartaDAO();
+    
+    
+    Detallecarta deca=new Detallecarta();
     
     
     
@@ -83,17 +93,37 @@ public class ControladorCarta extends HttpServlet {
             for (Plato plato : listcarta) {
                 pldao.resetCarta(plato.getId_plato());
             }
+            //catch datos
             String[] carta = request.getParameterValues("id_plato");
-            String fecha_carta=request.getParameter("fecha_carta");
+            
+            Date date = new Date();
+            DateFormat hourdateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            String fecha=hourdateFormat.format(date);
+            
+            ca.setFecha_carta(hourdateFormat.format(date));
+            cadao.add(ca); 
+            
+            CartaDAO nuevo_detalle=new CartaDAO();
+            int nueva_id_carta=nuevo_detalle.traerId_carta(fecha);
+            
+            
             
             for (int i = 0; i< carta.length; i++) {
                 int id_plato=Integer.parseInt(carta[i]);
                 pldao.enCarta(id_plato);
+                deca.setId_carta(nueva_id_carta);
+                deca.setId_plato(id_plato);
+                
+                cadao.RegistrarDetalleCarta(deca);
             }
             
             
             
             acceso=menu;
+        }else if(action.equalsIgnoreCase("vercarta")){
+            request.setAttribute("id_carta", request.getParameter("id"));
+            
+            acceso=vercarta;
         }
         
         RequestDispatcher vista=request.getRequestDispatcher(acceso);

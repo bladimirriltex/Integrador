@@ -131,6 +131,26 @@ public class CartaDAO implements CRUDcarta{
         
         
     }
+    int id_carta_nuevo;
+    public int traerId_carta(String fecha_carta) { //getEncabezado
+        
+        String sql="select * from encabezado_carta where fecha_carta="+fecha_carta;
+        try{
+            con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            
+            while(rs.next()){
+                
+                id_carta_nuevo=rs.getInt("id_carta");
+                
+                
+                
+            }
+        }catch (Exception e){
+            
+        }return id_carta_nuevo;
+    }
     
         
         
