@@ -6,9 +6,11 @@
 package DAO;
 
 import CONEXION.Conexion;
-import DTO.Carta;
+
 import DTO.Plato;
 import DAO.PlatoDAO;
+import DTO.Detallecarta;
+import DTO.encabezadoCarta;
 import INTERFACES.CRUDcarta;
 
 import java.sql.Connection;
@@ -26,34 +28,23 @@ public class CartaDAO implements CRUDcarta{
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
-    Carta ca = new Carta();
+    encabezadoCarta enca = new encabezadoCarta();
 
     @Override
     public List listar() {
-        ArrayList<Carta> list = new ArrayList<>();
-        String sql="select * from carta";
+        ArrayList<encabezadoCarta> list = new ArrayList<>();
+        String sql="select * from encabezado_carta";
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
             rs=ps.executeQuery();
             while(rs.next()){
-                Carta ca = new Carta();
-                ca.setId_carta(rs.getInt("id_carta"));
-                ca.setFecha_carta(rs.getString("fecha_carta"));
+                encabezadoCarta enca = new encabezadoCarta();
+                enca.setId_carta(rs.getInt("id_carta"));
+                enca.setFecha_carta(rs.getString("fecha_carta"));
                 
-                ca.setEntrada1(rs.getInt("entrada1"));
-                ca.setEntrada2(rs.getInt("entrada2"));
-                ca.setEntrada3(rs.getInt("entrada3"));
                 
-                ca.setSegundo1(rs.getInt("segundo1"));
-                ca.setSegundo2(rs.getInt("segundo2"));
-                ca.setSegundo3(rs.getInt("segundo3"));
-                
-                ca.setExtra1(rs.getInt("extra1"));
-                ca.setExtra2(rs.getInt("extra2"));
-                ca.setExtra3(rs.getInt("extra3"));
-                
-                list.add(ca);
+                list.add(enca);
             }
         }catch (Exception e){
             
@@ -61,8 +52,9 @@ public class CartaDAO implements CRUDcarta{
     }
 
     @Override
-    public Carta list(int id_carta) {
-        String sql="select * from carta where id_carta="+id_carta;
+    public encabezadoCarta list(int id_carta) { //getEncabezado
+        
+        String sql="select * from encabezado_carta where id_carta="+id_carta;
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -70,29 +62,18 @@ public class CartaDAO implements CRUDcarta{
             while(rs.next()){
                 
                 
-                ca.setId_carta(rs.getInt("id_carta"));
-                ca.setFecha_carta(rs.getString("fecha_carta"));
+                enca.setId_carta(rs.getInt("id_carta"));
+                enca.setFecha_carta(rs.getString("fecha_carta"));
                 
-                ca.setEntrada1(rs.getInt("entrada1"));
-                ca.setEntrada2(rs.getInt("entrada2"));
-                ca.setEntrada3(rs.getInt("entrada3"));
-                
-                ca.setSegundo1(rs.getInt("segundo1"));
-                ca.setSegundo2(rs.getInt("segundo2"));
-                ca.setSegundo3(rs.getInt("segundo3"));
-                
-                ca.setExtra1(rs.getInt("extra1"));
-                ca.setExtra2(rs.getInt("extra2"));
-                ca.setExtra3(rs.getInt("extra3"));
             }
         }catch (Exception e){
             
-        }return ca;
+        }return enca;
     }
 
     @Override
-    public boolean add(Carta ca) {
-        String sql="insert into carta (fecha_carta, entrada1, entrada2, entrada3, segundo1, segundo2, segundo3, extra1, extra2, extra3) values('"+ca.getFecha_carta()+"', '"+ca.getEntrada1()+"', '"+ca.getEntrada2()+"', '"+ca.getEntrada3()+"', '"+ca.getSegundo1()+"', '"+ca.getSegundo2()+"', '"+ca.getSegundo3()+"', '"+ca.getExtra1()+"', '"+ca.getExtra2()+"', '"+ca.getExtra3()+"')";
+    public boolean add(encabezadoCarta enca) { //RegistrarCarta
+        String sql="insert into encabezado_carta (fecha_carta) values('"+enca.getFecha_carta()+"')";
         try{
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -104,8 +85,8 @@ public class CartaDAO implements CRUDcarta{
     }
 
     @Override
-    public boolean edit(Carta ca) {
-        String sql="UPDATE carta SET fecha_carta = '"+ca.getFecha_carta()+"', entrada1= '"+ca.getEntrada1()+"', entrada2= '"+ca.getEntrada2()+"', entrada3= '"+ca.getEntrada3()+"', segundo1= '"+ca.getSegundo1()+"', segundo2= '"+ca.getSegundo2()+"', segundo3= '"+ca.getSegundo3()+"', extra1= '"+ca.getExtra1()+"', extra2= '"+ca.getExtra2()+"', extra3= '"+ca.getExtra3()+"' where id_carta= "+ca.getId_carta();
+    public boolean edit(encabezadoCarta enca) {
+        String sql="UPDATE encabezado_carta SET fecha_carta = '"+enca.getFecha_carta()+"' where id_carta= "+enca.getId_carta();
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -117,7 +98,7 @@ public class CartaDAO implements CRUDcarta{
 
     @Override
     public boolean eliminar(int id_carta) {
-        String sql="delete from carta where id_carta= "+id_carta;
+        String sql="delete from encabezado_carta where id_carta= "+id_carta;
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -126,21 +107,35 @@ public class CartaDAO implements CRUDcarta{
             
         }return false;
     }
-    public static void main(String[] args) {
-        List<Carta> listcarta=new ArrayList<Carta>();
+    
+    public boolean RegistrarDetalleCarta(Detallecarta detallecarta){
+        String sql="INSERT INTO `detalle_carta` (`id_carta`, `id_plato`) VALUES (?,?);";
+        con = cn.getConnection();
+        try{
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            
+            
+            ps.setInt(2,detallecarta.getId_carta());
+            ps.setInt(3,detallecarta.getId_plato());
+            
+            
+            
+        }catch(Exception e){
+            
+        }
+        return false;
+ 
         
-        CartaDAO dAO=new CartaDAO();
-        Carta carta=new Carta();
-        carta=dAO.list(1);
-        
-        System.out.println(carta.getSegundo1());
         
         
-        
+    }
+    
         
         
         
         
        
-    }
+    
 }

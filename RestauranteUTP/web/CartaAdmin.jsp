@@ -27,7 +27,7 @@
         
         %>
         
-        <form action="ControladorCarta" method="post">
+        <form action="ControladorCarta" >
             <div>
                 <h2>Entradas</h2>
                 <% 
@@ -67,9 +67,13 @@
                         
                         %>
             </div>
+            <div>
+                Fecha:<br>
+                <input class="form-control" type="text" name="fecha_carta"><br>
+            </div>
             
             
-        <input type="submit" name="accion" value="Actualizar Nueva Carta">
+        <input type="submit" name="accion" value="Actualizar Carta">
         </form>
         </div>
     </body>

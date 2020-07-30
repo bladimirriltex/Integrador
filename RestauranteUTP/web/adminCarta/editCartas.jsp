@@ -7,7 +7,7 @@
 
 
 
-<%@page import="DTO.Carta"%>
+
 <%@page import="DAO.CartaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

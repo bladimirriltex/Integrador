@@ -27,6 +27,8 @@ public class PlatoDAO implements CRUDplato{
     PreparedStatement ps;
     ResultSet rs;
     Plato pl = new Plato();
+    
+    
     int confirmacion= 1;
     int desconfirmacion= 0;
     
@@ -116,7 +118,13 @@ public class PlatoDAO implements CRUDplato{
         }return false;
     }
     
+    
+    
+    
     public boolean enCarta(int id_plato) {
+        
+        
+        
             String sql="UPDATE plato SET carta = '"+confirmacion+"' where id_plato= "+id_plato;
         try{
             con=cn.getConnection();
@@ -126,8 +134,22 @@ public class PlatoDAO implements CRUDplato{
             
         }return false;
     }
+    
+    
     public boolean sinCarta(int id_plato) {
             String sql="UPDATE plato SET carta = '"+desconfirmacion+"' where id_plato= "+id_plato;
+        try{
+            con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){
+            
+        }return false;
+    }
+    
+    
+    public boolean resetCarta(int id_plato) {
+        String sql="UPDATE plato SET carta = '"+desconfirmacion+"'";
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -153,5 +175,7 @@ public class PlatoDAO implements CRUDplato{
         dAO.sinCarta(1);
         
     }
+    
+    
     
 }

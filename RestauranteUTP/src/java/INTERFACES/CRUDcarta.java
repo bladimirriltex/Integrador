@@ -6,7 +6,7 @@
 package INTERFACES;
 
 
-import DTO.Carta;
+import DTO.encabezadoCarta;
 import java.util.List;
 
 /**
@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface CRUDcarta {
     public List listar();
-    public Carta list(int id_carta);
-    public boolean add(Carta ca);
-    public boolean edit(Carta ca);
+    public encabezadoCarta list(int id_carta);
+    public boolean add(encabezadoCarta enca);
+    public boolean edit(encabezadoCarta enca);
     public boolean eliminar(int id_carta);
     
     

@@ -20,10 +20,6 @@
         <servlet-name>ControladorCarta</servlet-name>
         <servlet-class>CONTROLADOR.ControladorCarta</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>ControladorNuevaCarta</servlet-name>
-        <servlet-class>CONTROLADOR.ControladorNuevaCarta</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -43,10 +39,6 @@
     <servlet-mapping>
         <servlet-name>ControladorCarta</servlet-name>
         <url-pattern>/ControladorCarta</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ControladorNuevaCarta</servlet-name>
-        <url-pattern>/ControladorNuevaCarta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
