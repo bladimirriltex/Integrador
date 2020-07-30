@@ -6,8 +6,7 @@
 package CONTROLADOR;
 
 import DAO.PedidoDAO;
-import DTO.InfoPedido;
-import DTO.encabezadoPedido;
+import DTO.Persona;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -15,13 +14,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author EDU
  */
-@WebServlet(name = "ControladorConsultaPedido", urlPatterns = {"/ControladorConsultaPedido"})
-public class ControladorConsultaPedido extends HttpServlet {
+@WebServlet(name = "ControladorEstadoPedido", urlPatterns = {"/ControladorEstadoPedido"})
+public class ControladorEstadoPedido extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,15 +35,36 @@ public class ControladorConsultaPedido extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String cambio = request.getParameter("accion");
+        int id = Integer.parseInt(request.getParameter("id"));
+        PedidoDAO pedidoDAO = new PedidoDAO();
+
+        HttpSession user = request.getSession(true);
+        Persona persona = (Persona) user.getAttribute("usuario");
+        HttpSession sesion = request.getSession(true);
+        sesion = (HttpSession) request.getAttribute("sesion");
         
-        int dni=Integer.parseInt(request.getParameter("consulta"));
-        
-        PedidoDAO dao=new PedidoDAO();
-        encabezadoPedido info=dao.getinfPedido(dni);
-        request.setAttribute("infopedido",info);
-        request.getRequestDispatcher("ConsultarPedido.jsp").forward(request, response);
-        
-        
+        if (cambio.equals("Preparando")) {
+
+            pedidoDAO.CambiarEstadoPedido(cambio, id);
+            
+            request.setAttribute("sesion", sesion);
+            
+            user.setAttribute("usuario", persona);
+            request.getRequestDispatcher("cocinero.jsp").forward(request, response);
+
+        } else if (cambio.equals("Listo")) {
+
+            pedidoDAO.CambiarEstadoPedido(cambio, id);
+            request.setAttribute("sesion", sesion);
+            
+            user.setAttribute("usuario", persona);
+            request.getRequestDispatcher("cocinero.jsp").forward(request, response);
+        }   else if (cambio.equals("Entregado")) {
+
+            pedidoDAO.CambiarEstadoPedido(cambio, id);
+            request.getRequestDispatcher("entregado.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -92,13 +92,19 @@ public class ControladorPedido extends HttpServlet {
         
         DateFormat hourdateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         
+        String lat=request.getParameter("lat");
+        String lng=request.getParameter("lng");
+        
+        System.out.println(lat+" "+lng);
+        
         encabezadoPedido encapedido=new encabezadoPedido();
         encapedido.setFecha(hourdateFormat.format(date));
         encapedido.setTotalpedido(total);
         encapedido.setEstado("en cola");
         encapedido.setIdcliente(persona.getId());
-        encapedido.setIdempleado(3);
         encapedido.setTipopago(tipopago);
+        encapedido.setLat(lat);
+        encapedido.setLng(lng);
         
         PedidoDAO ped=new PedidoDAO();
         boolean pedido=ped.RegistarheadPedido(encapedido);

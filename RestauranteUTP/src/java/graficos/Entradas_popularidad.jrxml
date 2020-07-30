@@ -85,7 +85,7 @@ group by
 		<band height="151" splitType="Stretch">
 			<pieChart>
 				<chart>
-					<reportElement x="180" y="19" width="200" height="100" uuid="01dee3d4-c3f4-46e2-a2b0-11813304e282"/>
+					<reportElement x="142" y="19" width="270" height="114" uuid="01dee3d4-c3f4-46e2-a2b0-11813304e282"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>

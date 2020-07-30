@@ -148,7 +148,7 @@ public class ControladorCarta extends HttpServlet {
         System.out.println(pl.getNombre_plato());
         dao.enCarta(pl.getId_plato());
         
-    }*/
+    }
 
         
                 
@@ -156,5 +156,10 @@ public class ControladorCarta extends HttpServlet {
     
 
 
+<<<<<<< HEAD
 
+=======
+*/
+}
+>>>>>>> 3588af4cec4d3426715db46a85114ba9857772fb
 

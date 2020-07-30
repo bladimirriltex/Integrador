@@ -18,7 +18,12 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    
+    <%
+        String lat=request.getParameter("lat");
+        
+        String lng=request.getParameter("lng");
+        
+    %>
  
     <!-- Cuenta -->
 
@@ -80,7 +85,7 @@
                     <input type="hidden" value="online">
 
                     <center>
-                      <a href="ControladorPedido?tipo=online" class="mb-5 mr-5 btn btn-outline-success">Pagar</a>
+                      <a href="ControladorPedido?tipo=online&lat=<%= lat %>&lng=<%= lng %>" class="mb-5 mr-5 btn btn-outline-success">Pagar</a>
 
                       <a href="javascript: history.go(-1)" class="mb-5 btn btn-outline-success">Volver</a>
                     </center>
@@ -107,7 +112,7 @@
                 <input type="hidden" value="efectivo">
               </div>
               <center>
-                <a href="ControladorPedido?tipo=efectivo" class="mb-5 mr-5 btn btn-outline-success">Pagar</a>
+                <a href="ControladorPedido?tipo=efectivo&lat=<%= lat %>&lng=<%= lng %>" class="mb-5 mr-5 btn btn-outline-success">Pagar</a>
 
                 <a href="javascript: history.go(-1)" class="mb-5 btn btn-outline-success">Volver</a>
               </center>
@@ -119,6 +124,11 @@
 
   </div>
 </div>
+    
+    <input id="latitud"  name="lat" value="<%= lat %>">
+    <input id="longitud" name="lng" value="<%= lng %>">
+    
+    
 </div>
 
 <!-- Optional JavaScript -->

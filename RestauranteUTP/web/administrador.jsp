@@ -15,13 +15,20 @@
     </head>
     <body>
         <h1>Bienvenido Administrador</h1>
-        <% 
-            HttpSession sesion=(HttpSession)request.getAttribute("sesion");
-            if(sesion==null){
+        <%    HttpSession user = request.getSession(true);
+            Persona persona = (Persona) user.getAttribute("usuario");
+            String nombre = "";
+            if (persona != null) {
+                nombre = persona.getNombres();
+            }  
+            HttpSession sesion = request.getSession(true);
+            sesion = (HttpSession) sesion.getAttribute("sesion");
+            if (sesion == null) {
                 request.getRequestDispatcher("IniciarSesion.jsp").forward(request, response);
             }
         %>
         <h3></h3>
+        <%= persona.getNombres() %>
         <div class="container text-center" >
             <h2>¿Que deseas hacer?</h2>
         <a class="btn btn-success btn-lg" href="Controlador?accion=listarclientes">Listar Clientes</a>
