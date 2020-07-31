@@ -32,8 +32,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author BaiaBaia
  */
 public class ControladorCarta extends HttpServlet {
-    String menu="Menudia.jsp";
-    String vercarta="verDetalleCarta.jsp";
+    String menudia="Menudia.jsp";
+    String listarcartas="adminCarta/verCartas.jsp";
+    String vercarta="adminCarta/verPlatos.jsp";
     
     Plato pl=new Plato();
     PlatoDAO pldao=new PlatoDAO();
@@ -97,21 +98,26 @@ public class ControladorCarta extends HttpServlet {
             String[] carta = request.getParameterValues("id_plato");
             
             Date date = new Date();
-            DateFormat hourdateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            DateFormat hourdateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             String fecha=hourdateFormat.format(date);
             
-            ca.setFecha_carta(hourdateFormat.format(date));
+            
+            
+            
+            
+            ca.setFecha_carta(fecha);
             cadao.add(ca); 
             
-            CartaDAO nuevo_detalle=new CartaDAO();
-            int nueva_id_carta=nuevo_detalle.traerId_carta(fecha);
+            
             
             
             
             for (int i = 0; i< carta.length; i++) {
                 int id_plato=Integer.parseInt(carta[i]);
                 pldao.enCarta(id_plato);
-                deca.setId_carta(nueva_id_carta);
+                
+                
+                deca.setId_carta(cadao.traerId_carta(fecha));
                 deca.setId_plato(id_plato);
                 
                 cadao.RegistrarDetalleCarta(deca);
@@ -119,11 +125,15 @@ public class ControladorCarta extends HttpServlet {
             
             
             
-            acceso=menu;
+            acceso=menudia;
         }else if(action.equalsIgnoreCase("vercarta")){
             request.setAttribute("id_carta", request.getParameter("id"));
             
+            
+            
             acceso=vercarta;
+        }else if(action.equalsIgnoreCase("listarcartas")){
+            acceso=listarcartas;
         }
         
         RequestDispatcher vista=request.getRequestDispatcher(acceso);
@@ -190,6 +200,17 @@ public class ControladorCarta extends HttpServlet {
 
 =======
 */
+    public static void main(String[] args) {
+        Date date=new Date();
+        DateFormat hourdateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String fecha=hourdateFormat.format(date);
+        
+        CartaDAO prueba=new CartaDAO();
+        
+        System.out.println(fecha);
+        System.out.println(prueba.traerId_carta(fecha));
+        
+    }
 }
 
 

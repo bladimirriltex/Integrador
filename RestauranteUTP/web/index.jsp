@@ -13,15 +13,24 @@
         <title>Administrador</title>
     </head>
     <body>
-        <h1>Bienvenido Administrador</h1>
-        
         <div class="container text-center" >
-            <h2>¿Que deseas hacer?</h2>
-        <a class="btn btn-success btn-lg" href="Controlador?accion=listarclientes">Listar Clientes</a>
-        <a class="btn btn-success btn-lg" href="ControladorPlato?accion=listarplatos">Listar Platos</a>
-        <a class="btn btn-success btn-lg" href="ControladorVehiculo?accion=listarvehiculos">Listar Vehiculos</a>
-        <a class="btn btn-success btn-lg" href="ControladorEmpleado?accion=listarempleados">Listar Empleados</a>
-        <a class="btn btn-success btn-lg" href="ControladorCarta?accion=listarcartas">Listar Cartas</a>
+        
+            <div><h1>Bienvenido Administrador</h1></div>
+        
+            <div>
+                <div><h2>¿Que deseas hacer?</h2></div>
+                <a class="btn btn-success btn-lg" href="Controlador?accion=listarclientes">Listar Clientes</a>
+                <a class="btn btn-success btn-lg" href="ControladorPlato?accion=listarplatos">Listar Platos</a>
+                <a class="btn btn-success btn-lg" href="ControladorVehiculo?accion=listarvehiculos">Listar Vehiculos</a>
+                <a class="btn btn-success btn-lg" href="ControladorEmpleado?accion=listarempleados">Listar Empleados</a>
+                <a class="btn btn-success btn-lg" href="ControladorCarta?accion=listarcartas">Listar Cartas</a>
+            </div>
+            <div><h2>Resumen del dia</h2></div>
+                <a class="btn btn-success btn-lg" href="">Entradas</a>
+                <a class="btn btn-success btn-lg" href="">Segundos</a>
+                <a class="btn btn-success btn-lg" href="">Extras</a>
+            
     </div>
+        
     </body>
 </html>

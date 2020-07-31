@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0957f0f5-1a67-4ee7-a32d-1ab1ce9ee25c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     plato.`nombre_plato` AS plato_nombre_plato,
+     tipo_plato.`nombre_tipo` AS tipo_plato_nombre_tipo,
+     COUNT(detalle_pedido.`cantidad_plato`) AS detalle_pedido_cantidad_plato
+FROM
+     `tipo_plato` tipo_plato INNER JOIN `plato` plato ON tipo_plato.`id_tipo` = plato.`id_tipo`
+     INNER JOIN `detalle_pedido` detalle_pedido ON plato.`id_plato` = detalle_pedido.`id_plato`
+WHERE
+     nombre_tipo = 'Entrada'
+group by 
+	nombre_plato;]]>
+	</queryString>
+	<field name="plato_nombre_plato" class="java.lang.String"/>
+	<field name="tipo_plato_nombre_tipo" class="java.lang.String"/>
+	<field name="detalle_pedido_cantidad_plato" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="196" y="25" width="160" height="20" uuid="7c0650ec-369e-46ac-b1d1-274abe5749ac"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Entradas Mas Populares]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="21" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="231" y="0" width="100" height="20" uuid="223e9b90-8793-4268-8ecd-d30bce8ce1c0"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="2" width="100" height="20" uuid="5e92718f-f547-49c0-93f1-7d5efb52fdfc"/>
+				<text><![CDATA[plato_nombre_plato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="2" width="100" height="20" uuid="233f126a-2ad4-4375-be7c-9bf686d075ea"/>
+				<text><![CDATA[detalle_pedido_cantidad_plato]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="0" width="100" height="20" uuid="1b9ad42b-b951-4915-bb45-edb5c0227ed2"/>
+				<textFieldExpression><![CDATA[$F{plato_nombre_plato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="100" height="20" uuid="6f89373b-aed0-408b-8aca-a1fc35ac70c0"/>
+				<textFieldExpression><![CDATA[$F{detalle_pedido_cantidad_plato}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="438" y="0" width="80" height="20" uuid="6ac7f222-18c4-4514-852c-d58eb9bfe212"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="518" y="0" width="40" height="20" uuid="dc07766a-1340-4860-9908-b6d4981820e5"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="151" splitType="Stretch">
+			<pieChart>
+				<chart>
+					<reportElement x="142" y="19" width="270" height="114" uuid="01dee3d4-c3f4-46e2-a2b0-11813304e282"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{plato_nombre_plato}]]></keyExpression>
+					<valueExpression><![CDATA[$F{detalle_pedido_cantidad_plato}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</summary>
+</jasperReport>

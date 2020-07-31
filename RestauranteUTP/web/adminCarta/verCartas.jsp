@@ -33,7 +33,7 @@
                         <a class="btn btn-success btn-sm" href="ControladorCarta?accion=addcartas">Agregar Nuevo</a>
                         <table class="table table-bordered">
                             <tr>
-                                <th class="text-center">Id Plato</th>
+                                <th class="text-center">Id Carta</th>
                                 <th class="text-center">Fecha</th>
                                 
                                 
@@ -58,7 +58,7 @@
                                 
                                 
                                 <td>
-                                    <a class="btn btn-warning btn-sm" href="ControladorCarta?accion=editarcartas&id=<%= ca.getId_carta() %>">Ver</a>
+                                    <a class="btn btn-warning btn-sm" href="ControladorCarta?accion=vercarta&id=<%= ca.getId_carta() %>">Ver</a>
                                     
                                     
                                     

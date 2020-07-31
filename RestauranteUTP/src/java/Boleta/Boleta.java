@@ -36,13 +36,13 @@ public class Boleta {
             
             JasperReport reporte = null;
             String path = "C:\\Users\\EDU\\Documents\\Trabajos de la u\\UTPRestaurante\\IntegradorRestauranteUTP\\RestauranteUTP\\src\\java\\jreport\\Boletas.jasper";
-            
+            String pathgianpiero="D:\\Proyectos\\Git\\IntegradorRestauranteUTP\\RestauranteUTP\\src\\java\\jreport\\Boletas.jasper";
             Map para= new HashMap();
             para.put("id_pedido",idpedido);
             
             
             
-            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(pathgianpiero);
             
             JasperPrint jprint = JasperFillManager.fillReport(reporte, para, conn);
             

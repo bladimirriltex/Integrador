@@ -3,6 +3,7 @@
     Created on : 24/06/2020, 05:39:04 PM
     Author     : Gianpiero
 --%>
+<%@page import="DAO.CartaDAO"%>
 <%@page import="DAO.PlatoDAO"%>
 <%@page import="DTO.Plato"%>
 
@@ -29,7 +30,7 @@
                     
                     <div class="container">
                         <h1>Tus Platos</h1>
-                        <a class="btn btn-success btn-sm" href="ControladorPlato?accion=addplatos">Agregar Nuevo</a>
+                        
                         <table class="table table-bordered">
                             <tr>
                                 <th class="text-center">Id Plato</th>
@@ -39,11 +40,12 @@
                                 <th class="text-center">Stock</th>
                                 <th class="text-center">Id Tipo</th>
                                 
-                                <th class="text-center">Acciones</th>
+                                
                             </tr>
                             <%
-				PlatoDAO dao = new PlatoDAO();
-                                List<Plato> list= dao.listar();
+                                int id=Integer.parseInt((String)request.getAttribute("id_carta"));
+				CartaDAO cartadao = new CartaDAO();
+                                List<Plato> list= cartadao.getPlatosbyId_carta(id);
                                 Iterator<Plato> iter= list.iterator();
                                 Plato pl=null;
                                 
@@ -63,10 +65,7 @@
                                 <td class="text-center"><%= pl.getId_tipo() %></td>
                                 
                                 
-                                <td>
-                                    <a class="btn btn-warning btn-sm" href="ControladorPlato?accion=editarplatos&id=<%= pl.getId_plato() %>">Editar</a>
-                                    <a class="btn btn-danger btn-sm" href="ControladorPlato?accion=eliminarplatos&id=<%= pl.getId_plato() %>">Eliminar</a>
-                                </td>
+                                
                                 </tr>
                                 <%
                                 }

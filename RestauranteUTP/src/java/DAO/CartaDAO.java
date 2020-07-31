@@ -16,7 +16,10 @@ import INTERFACES.CRUDcarta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -109,24 +112,15 @@ public class CartaDAO implements CRUDcarta{
     }
     
     public boolean RegistrarDetalleCarta(Detallecarta detallecarta){
-        String sql="INSERT INTO `detalle_carta` (`id_carta`, `id_plato`) VALUES (?,?);";
-        con = cn.getConnection();
+        String sql="insert into detalle_carta (id_carta, id_plato) values('"+detallecarta.getId_carta()+"','"+detallecarta.getId_plato()+"')";
         try{
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
-            
-            
-            ps.setInt(2,detallecarta.getId_carta());
-            ps.setInt(3,detallecarta.getId_plato());
-            
-            
-            
         }catch(Exception e){
             
         }
         return false;
- 
         
         
         
@@ -134,7 +128,7 @@ public class CartaDAO implements CRUDcarta{
     int id_carta_nuevo;
     public int traerId_carta(String fecha_carta) { //getEncabezado
         
-        String sql="select * from encabezado_carta where fecha_carta="+fecha_carta;
+        String sql="select * from encabezado_carta where fecha_carta='"+fecha_carta+"'";
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -152,10 +146,58 @@ public class CartaDAO implements CRUDcarta{
         }return id_carta_nuevo;
     }
     
+    public List getPlatosbyId_carta(int id_carta) {
+        ArrayList<Plato> list = new ArrayList<>();
+        String sql="SELECT * FROM `encabezado_carta` encabezado_carta INNER JOIN `detalle_carta` detalle_carta ON encabezado_carta.`id_carta` = detalle_carta.`id_carta` INNER JOIN `plato` plato ON detalle_carta.`id_plato` = plato.`id_plato`";
+        try{
+            con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            
+            while(rs.next()){
+                Plato pl = new Plato();
+                int i=rs.getInt("id_carta");
+                if(i==id_carta){
+                    pl.setId_plato(rs.getInt("id_plato"));
+                    pl.setNombre_plato(rs.getString("nombre_plato"));
+                    pl.setPrecio_plato(rs.getFloat("precio_plato"));
+                    pl.setImagen(rs.getString("imagen"));
+                    pl.setStock(rs.getInt("stock"));
+                    pl.setId_tipo(rs.getInt("id_tipo"));
+                    pl.setCarta(rs.getBoolean("carta"));
+                
+                    list.add(pl);
+                }
+                
+                
+                
+            }
+        }catch (Exception e){
+            
+        }return list;
+    }
+    
+    public static void main(String[] args) {
+        Date date=new Date();
+        DateFormat hourdateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String fecha="2020-07-30";
+        String fecha1=hourdateFormat.format(date);
+        
+        CartaDAO prueba=new CartaDAO();
+        
+        System.out.println(fecha);
+        System.out.println(prueba.traerId_carta(hourdateFormat.format(date)));
+        
+    }
+
+    
+    }
+
+    
         
         
         
         
        
     
-}
+
