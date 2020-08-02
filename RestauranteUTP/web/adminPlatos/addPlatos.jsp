@@ -22,7 +22,7 @@
                 Precio del PLato :<br>
                 <input class="form-control" type="text" name="precio_plato"><br>
                 Imagen:<br>
-                <input class="form-control" type="text" name="imagen"><br>
+                <input accept="image/*" class="form-control" type="file" name="imagen"><br>
                 Stock del producto:<br>
                 <input class="form-control" type="text" name="stock"><br>
                 Tipo de plato:<br>

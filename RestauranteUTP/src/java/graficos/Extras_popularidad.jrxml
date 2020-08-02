@@ -3,22 +3,30 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="fecha" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
+     LEFT((fecha_pedido),10) AS fecha,
+     RIGHT((fecha_pedido),8) AS hora,
+     COUNT(detalle_pedido.`cantidad_plato`) AS detalle_pedido_cantidad_plato,
      plato.`nombre_plato` AS plato_nombre_plato,
-     tipo_plato.`nombre_tipo` AS tipo_plato_nombre_tipo,
-     COUNT(detalle_pedido.`cantidad_plato`) AS detalle_pedido_cantidad_plato
+     tipo_plato.`nombre_tipo` AS tipo_plato_nombre_tipo
 FROM
-     `tipo_plato` tipo_plato INNER JOIN `plato` plato ON tipo_plato.`id_tipo` = plato.`id_tipo`
-     INNER JOIN `detalle_pedido` detalle_pedido ON plato.`id_plato` = detalle_pedido.`id_plato`
+     `encabezado_pedido` encabezado_pedido INNER JOIN `detalle_pedido` detalle_pedido ON encabezado_pedido.`id_pedido` = detalle_pedido.`id_pedido`
+     INNER JOIN `plato` plato ON detalle_pedido.`id_plato` = plato.`id_plato`
+     INNER JOIN `tipo_plato` tipo_plato ON plato.`id_tipo` = tipo_plato.`id_tipo`
 WHERE
-     nombre_tipo = 'Entrada'
-group by 
-	nombre_plato;]]>
+     LEFT((fecha_pedido),10) = $P!{fecha} and nombre_tipo = 'Extras'
+GROUP BY
+     nombre_plato]]>
 	</queryString>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="hora" class="java.lang.String"/>
+	<field name="detalle_pedido_cantidad_plato" class="java.lang.Long"/>
 	<field name="plato_nombre_plato" class="java.lang.String"/>
 	<field name="tipo_plato_nombre_tipo" class="java.lang.String"/>
-	<field name="detalle_pedido_cantidad_plato" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -29,7 +37,7 @@ group by
 				<textElement textAlignment="Justified">
 					<font size="14"/>
 				</textElement>
-				<text><![CDATA[Entradas Mas Populares]]></text>
+				<text><![CDATA[Extras Mas Populares]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -45,11 +53,11 @@ group by
 		<band height="22" splitType="Stretch">
 			<staticText>
 				<reportElement x="180" y="2" width="100" height="20" uuid="5e92718f-f547-49c0-93f1-7d5efb52fdfc"/>
-				<text><![CDATA[plato_nombre_plato]]></text>
+				<text><![CDATA[Plato]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="280" y="2" width="100" height="20" uuid="233f126a-2ad4-4375-be7c-9bf686d075ea"/>
-				<text><![CDATA[detalle_pedido_cantidad_plato]]></text>
+				<text><![CDATA[Cantidad]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -85,7 +93,7 @@ group by
 		<band height="151" splitType="Stretch">
 			<pieChart>
 				<chart>
-					<reportElement x="142" y="19" width="270" height="114" uuid="01dee3d4-c3f4-46e2-a2b0-11813304e282"/>
+					<reportElement x="131" y="13" width="270" height="114" uuid="01dee3d4-c3f4-46e2-a2b0-11813304e282"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>

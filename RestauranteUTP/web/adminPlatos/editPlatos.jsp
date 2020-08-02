@@ -32,7 +32,7 @@
                 Precio del plato:<br>
                 <input class="form-control" type="text" value="<%= pl.getPrecio_plato() %>" name="precio_plato"><br>
                 Imagen:<br>
-                <input class="form-control" type="text" value="<%= pl.getImagen() %>" name="imagen"><br>
+                <input accept="image/*" class="form-control" type="file" value="<%= pl.getImagen() %>" name="imagen"><br>
                 Stock:<br>
                 <input class="form-control" type="text" value="<%= pl.getStock() %>" name="stock"><br>
                 Tipo de plato:<br>

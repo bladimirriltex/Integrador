@@ -42,7 +42,7 @@ public class Boleta {
             
             
             
-            reporte = (JasperReport) JRLoader.loadObjectFromFile(pathgianpiero);
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
             
             JasperPrint jprint = JasperFillManager.fillReport(reporte, para, conn);
             

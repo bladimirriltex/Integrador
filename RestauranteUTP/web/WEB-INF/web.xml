@@ -24,6 +24,10 @@
         <servlet-name>NewServlet</servlet-name>
         <servlet-class>CONTROLADOR.NewServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorGrafico</servlet-name>
+        <servlet-class>CONTROLADOR.ControladorGrafico</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorGrafico</servlet-name>
+        <url-pattern>/ControladorGrafico</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

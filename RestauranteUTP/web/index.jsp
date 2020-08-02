@@ -26,9 +26,9 @@
                 <a class="btn btn-success btn-lg" href="ControladorCarta?accion=listarcartas">Listar Cartas</a>
             </div>
             <div><h2>Resumen del dia</h2></div>
-                <a class="btn btn-success btn-lg" href="">Entradas</a>
-                <a class="btn btn-success btn-lg" href="">Segundos</a>
-                <a class="btn btn-success btn-lg" href="">Extras</a>
+                <a class="btn btn-success btn-lg" href="ControladorGrafico?accion=graficoentradas">Entradas</a>
+                <a class="btn btn-success btn-lg" href="ControladorGrafico?accion=graficosegundos">Segundos</a>
+                <a class="btn btn-success btn-lg" href="ControladorGrafico?accion=graficoextras">Extras</a>
             
     </div>
         

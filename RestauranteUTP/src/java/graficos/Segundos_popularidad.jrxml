@@ -5,20 +5,25 @@
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT
+     LEFT((fecha_pedido),10) AS fecha,
+     RIGHT((fecha_pedido),8) AS hora,
+     COUNT(detalle_pedido.`cantidad_plato`) AS detalle_pedido_cantidad_plato,
      plato.`nombre_plato` AS plato_nombre_plato,
-     tipo_plato.`nombre_tipo` AS tipo_plato_nombre_tipo,
-     COUNT(detalle_pedido.`cantidad_plato`) AS detalle_pedido_cantidad_plato
+     tipo_plato.`nombre_tipo` AS tipo_plato_nombre_tipo
 FROM
-     `tipo_plato` tipo_plato INNER JOIN `plato` plato ON tipo_plato.`id_tipo` = plato.`id_tipo`
-     INNER JOIN `detalle_pedido` detalle_pedido ON plato.`id_plato` = detalle_pedido.`id_plato`
+     `encabezado_pedido` encabezado_pedido INNER JOIN `detalle_pedido` detalle_pedido ON encabezado_pedido.`id_pedido` = detalle_pedido.`id_pedido`
+     INNER JOIN `plato` plato ON detalle_pedido.`id_plato` = plato.`id_plato`
+     INNER JOIN `tipo_plato` tipo_plato ON plato.`id_tipo` = tipo_plato.`id_tipo`
 WHERE
-     nombre_tipo = 'Segundos'
-group by 
-	nombre_plato;]]>
+     LEFT((fecha_pedido),10) = '2020-07-24' and nombre_tipo = 'Segundos'
+GROUP BY
+     nombre_plato]]>
 	</queryString>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="hora" class="java.lang.String"/>
+	<field name="detalle_pedido_cantidad_plato" class="java.lang.Long"/>
 	<field name="plato_nombre_plato" class="java.lang.String"/>
 	<field name="tipo_plato_nombre_tipo" class="java.lang.String"/>
-	<field name="detalle_pedido_cantidad_plato" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -79,9 +84,13 @@ group by
 				<reportElement x="518" y="0" width="40" height="20" uuid="dc07766a-1340-4860-9908-b6d4981820e5"/>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="151" splitType="Stretch">
 			<pieChart>
 				<chart>
-					<reportElement x="127" y="20" width="278" height="142" uuid="01dee3d4-c3f4-46e2-a2b0-11813304e282"/>
+					<reportElement x="131" y="13" width="270" height="114" uuid="01dee3d4-c3f4-46e2-a2b0-11813304e282"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -96,8 +105,5 @@ group by
 				</piePlot>
 			</pieChart>
 		</band>
-	</pageFooter>
-	<summary>
-		<band height="151" splitType="Stretch"/>
 	</summary>
 </jasperReport>

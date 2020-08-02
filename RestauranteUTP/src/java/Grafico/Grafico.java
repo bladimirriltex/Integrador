@@ -22,16 +22,16 @@ import net.sf.jasperreports.engine.util.JRLoader;
  */
 public class Grafico {
     
-    public void generarGraficoFecha(String fecha){
+    public void generarGraficobyEntrada(String fecha){
         try {
             Conexion con = new Conexion();
             Connection conn=(Connection)con.getConnection();
             
             JasperReport reporte = null;
-            String path = "\\src\\java\\graficos\\Plato_popularidad.jasper";
+            String path = "\\src\\java\\graficos\\Entradas_popurlaridad";
             
             Map para= new HashMap();
-            para.put("id_pedido",fecha);
+            para.put("fecha",fecha);
             
             
             
@@ -41,10 +41,61 @@ public class Grafico {
             
             
             
-            JasperExportManager.exportReportToPdfFile( jprint, "D:/reporte.pdf");
+            JasperExportManager.exportReportToPdfFile( jprint, "D:/grafico_entradas.pdf");
+            
+        } catch (JRException ex) {
+            System.out.println("error "+ ex);
+        }
+    }
+    public void generarGraficobySegundo(String fecha){
+        try {
+            Conexion con = new Conexion();
+            Connection conn=(Connection)con.getConnection();
+            
+            JasperReport reporte = null;
+            String path = "\\src\\java\\graficos\\Segundos_popurlaridad";
+            
+            Map para= new HashMap();
+            para.put("fecha",fecha);
+            
+            
+            
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+            
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, para, conn);
+            
+            
+            
+            JasperExportManager.exportReportToPdfFile( jprint, "D:/grafico_segundos.pdf");
+            
+        } catch (JRException ex) {
+            System.out.println("error "+ ex);
+        }
+    }
+    public void generarGraficobyExtra(String fecha){
+        try {
+            Conexion con = new Conexion();
+            Connection conn=(Connection)con.getConnection();
+            
+            JasperReport reporte = null;
+            String path = "\\src\\java\\graficos\\Extras_popurlaridad";
+            
+            Map para= new HashMap();
+            para.put("fecha",fecha);
+            
+            
+            
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+            
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, para, conn);
+            
+            
+            
+            JasperExportManager.exportReportToPdfFile( jprint, "D:/grafico_extras.pdf");
             
         } catch (JRException ex) {
             System.out.println("error "+ ex);
         }
     }
 }
+
